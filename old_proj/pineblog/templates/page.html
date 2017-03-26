@@ -1,0 +1,72 @@
+{% include 'header.html' %}
+{% include 'postloop.html' %}
+		{# header, postloop, page-buttons, footer #}
+		<div id="page-buttons">
+		<ul>
+	{% if ellipsize_before or ellipsize_after %}
+		{# always show first page #}
+			<a href="/">
+		{% if is_first_page %}
+			<li class="page-button active-page-button">1</li>
+		{% else %}
+			<li class="page-button">1</li>
+		{% endif %}
+			</a>
+		{% if ellipsize_before %}
+			<div class="ellipsis">...</div>
+		{% endif %}
+		{% if page_before %}
+			<a href="/page/{{ page_before }}">
+			<li class="page-button">{{ page_before }}</li>
+			</a>
+		{% endif %}
+		{% if not is_first_page and not is_last_page %}
+			<a href="/page/{{ requested_page }}">
+			<li class="page-button active-page-button">{{ requested_page }}</li>
+			</a>
+		{% endif %}
+		{% if page_after %}
+			<a href="/page/{{ page_after }}">
+			<li class="page-button">{{ page_after }}</li>
+			</a>
+		{% endif %}
+		{% if ellipsize_after %}
+			<div class="ellipsis">...</div>
+		{% endif %}
+			<a href="/page/{{ last_page }}">
+		{% if is_last_page %}
+			<li class="page-button active-page-button">{{ last_page }}</li>
+		{% else %}
+			<li class="page-button">{{ last_page }}</li>
+		{% endif %}
+			</a>
+	{% else %}
+		{% for i in range(1, number_of_pages + 1) %}
+			{% if i == 1 %}
+			<a href="/">
+			<li id="1" class="page-button">1</li>
+			</a>
+			{% else %}
+			<a href="/page/{{ i  }}">
+			<li id="{{ i }}" class="page-button">{{ i }}</li>
+			</a>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+		</ul>
+		<script async type="text/javascript">
+			var page;
+			page = String(location);
+			if ( location.pathname === "/" ) {
+				page = 1
+			} else {
+				page = page.split('/')[4];
+			}
+			if ( page <= 5 ) {
+				active_page = document.getElementById(page);
+				//active_page.className += " " + "active-page-button";
+				active_page.className += " active-page-button";
+			}
+		</script>
+		</div>
+{% include 'footer.html' %}

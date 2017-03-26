@@ -1,0 +1,34 @@
+{% include 'header-nosong-noimg.html' %}
+	{# header, single-post, home button, footer #}
+		{% if post %}
+		<article>
+			<div class="post-title">
+				{{ post['title'] }}
+			</div>
+			<div class="post-meta">
+			{% if post['time'] %}
+				posted on {{ post['date'] }} at {{ post['time'] }} by {{ post['author'] }}
+			{% else %}
+				posted on {{ post['date'] }} by {{ post['author'] }}
+			{% endif %}
+			</div>
+			<div class="post-content">
+				{% for line in post['content'] %}
+				{% autoescape false %}
+				{{ line.strip() }}
+				{% endautoescape %}
+				{% endfor %}
+			</div>
+			<hr />
+			<div class="post-tags">
+				<p>Tagged:</p>
+				<ul>
+				{% for tag in post['tags'] %}
+				<li><a href="/tagged/{{ tag }}">#{{ tag }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		</article>
+{% include 'home-button.html' %}
+{% include 'footer.html' %}

@@ -1,0 +1,58 @@
+// ---- PAGE BUTTONS ----
+#page-buttons {
+	a {
+		border-bottom: none !important;
+		margin-left: 13px;
+	}
+	ul {
+		margin-left: -13px;
+	}
+	.page-button {
+		display: inline-block;
+		width: 40px;
+		text-align: center;
+		line-height: 40px;
+		.border-radius(3px);
+		.my-button-box-shadow(0px 5px 7px 2px);
+		background-color: @inactive-button-background;
+		color: @foreground;
+		.my-transition(background-color);
+		&:hover {
+			background-color: @foreground;
+			color: @inactive-button-background;
+			.my-transition(background-color);
+		}
+	}
+	.active-page-button {
+		background-color: @foreground !important;
+		color: @inactive-button-background !important;
+		font-weight: bold !important;
+	}
+}
+
+.ellipsis {
+	display: inline;
+	padding-left: 10px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.home-button-wrap {
+	width: 80px;
+	margin-bottom: 8px;
+	.home-button {
+		display: inline;
+		text-align: center;
+		background-color: @inactive-button-background;
+		color: @foreground;
+		.my-button-box-shadow(0px 5px 7px 2px);
+		.border-radius(10px);
+		padding: 10px;
+		.my-transition(background-color);
+		&:hover {
+			background-color: @foreground;
+			color: @inactive-button-background;
+			.my-transition(background-color);
+		}
+	}
+}

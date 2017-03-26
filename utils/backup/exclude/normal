@@ -1,0 +1,15 @@
+/lost+found
+/dev/*
+/proc/*
+/run/*
+/sys/*
+/tmp/*
+/media/Data/*
+/media/Windows/*
+/home/pineman/backup/*.tar*
+/home/pineman/Documents/*
+/home/pineman/Music/*
+/home/pineman/Pictures/*
+/home/pineman/Downloads/*
+/home/pineman/Videos/*
+/home/pineman/Games/*
