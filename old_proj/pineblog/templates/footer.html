@@ -1,0 +1,33 @@
+	</content> <!-- content -->
+	</div> <!-- header-and-content-wrap -->
+	<div id="footer-container">
+	<footer>
+		{{ footer_sentence.strip() }}
+	</footer>
+	</div> <!-- footer-container -->
+	</div> <!--- site-container -->
+	<script type="text/javascript" async>
+		player = document.getElementById("blogmusic-player");
+		if (document.contains(player)) {
+			var loaded = false;
+			player.volume = 0.2;
+
+			function loadBlogMusic()
+			{
+				if (loaded)
+				{
+					player.style.display = 'none';
+					player.pause()
+					loaded = false;
+				}
+				else
+				{
+					player.style.display = 'block';
+					player.play()
+					loaded = true;
+				}
+			}
+		}
+	</script>
+	</body>
+</html>

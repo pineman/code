@@ -1,0 +1,41 @@
+		{% if data %}
+		{% for posts in data %}
+		<article>
+		<div class="post-title">
+			<a href="/posts/{{ posts['filename'] }}">{{ posts['title'] }}</a>
+		</div>
+
+		<div class="post-meta">
+			{% if posts['time'] %}
+			posted on {{ posts['date'] }} at {{ posts['time'] }} by {{ posts['author'] }}
+			{% else %}
+			posted on {{ posts['date'] }} by {{ posts['author'] }}
+			{% endif %}
+		</div>
+
+		<div class="post-content">
+			{% autoescape false %}
+			{% for line in posts['excerpt'] %}
+			{{ line.strip() }}
+			{% endfor %}
+			{% endautoescape %}
+			<div class="continue-reading">
+				<a href="/posts/{{ posts['filename'] }}">
+				• • •
+				</a>
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="post-tags">
+		<p>Tagged:</p>
+		<ul>
+			{% for tag in posts['tags'] %}
+			<li><a href="/tagged/{{ tag }}">#{{ tag }}</a></li>
+			{% endfor %}
+		</ul>
+		</div>
+		</article>
+		{% endfor %}
+		{% endif %}

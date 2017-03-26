@@ -1,0 +1,113 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'calc.ui'
+#
+# Created by: PyQt5 UI code generator 5.6
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(355, 449)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.LCD = QtWidgets.QLCDNumber(self.centralwidget)
+        self.LCD.setEnabled(True)
+        self.LCD.setGeometry(QtCore.QRect(10, 10, 331, 191))
+        font = QtGui.QFont()
+        font.setPointSize(26)
+        self.LCD.setFont(font)
+        self.LCD.setMouseTracking(False)
+        self.LCD.setDigitCount(8)
+        self.LCD.setProperty("value", 23.0)
+        self.LCD.setObjectName("LCD")
+        self.ButtonClear = QtWidgets.QPushButton(self.centralwidget)
+        self.ButtonClear.setGeometry(QtCore.QRect(250, 220, 89, 27))
+        self.ButtonClear.setObjectName("ButtonClear")
+        self.Number_0 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_0.setGeometry(QtCore.QRect(10, 340, 89, 27))
+        self.Number_0.setObjectName("Number_0")
+        self.digits = QtWidgets.QButtonGroup(MainWindow)
+        self.digits.setObjectName("digits")
+        self.digits.addButton(self.Number_0)
+        self.Number_1 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_1.setGeometry(QtCore.QRect(10, 300, 89, 27))
+        self.Number_1.setObjectName("Number_1")
+        self.digits.addButton(self.Number_1)
+        self.Number_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_2.setGeometry(QtCore.QRect(10, 260, 89, 27))
+        self.Number_2.setObjectName("Number_2")
+        self.digits.addButton(self.Number_2)
+        self.Number_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_3.setGeometry(QtCore.QRect(130, 260, 89, 27))
+        self.Number_3.setObjectName("Number_3")
+        self.digits.addButton(self.Number_3)
+        self.Number_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_4.setGeometry(QtCore.QRect(130, 300, 89, 27))
+        self.Number_4.setObjectName("Number_4")
+        self.digits.addButton(self.Number_4)
+        self.Number_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_5.setGeometry(QtCore.QRect(130, 340, 89, 27))
+        self.Number_5.setObjectName("Number_5")
+        self.digits.addButton(self.Number_5)
+        self.Number_6 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_6.setGeometry(QtCore.QRect(250, 260, 89, 27))
+        self.Number_6.setObjectName("Number_6")
+        self.digits.addButton(self.Number_6)
+        self.Number_7 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_7.setGeometry(QtCore.QRect(250, 300, 91, 27))
+        self.Number_7.setObjectName("Number_7")
+        self.digits.addButton(self.Number_7)
+        self.Number_8 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_8.setGeometry(QtCore.QRect(250, 340, 89, 27))
+        self.Number_8.setObjectName("Number_8")
+        self.digits.addButton(self.Number_8)
+        self.Number_9 = QtWidgets.QPushButton(self.centralwidget)
+        self.Number_9.setGeometry(QtCore.QRect(10, 380, 89, 27))
+        self.Number_9.setObjectName("Number_9")
+        self.digits.addButton(self.Number_9)
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(130, 380, 89, 27))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(250, 380, 89, 27))
+        self.pushButton_2.setObjectName("pushButton_2")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 355, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.ButtonClear.setText(_translate("MainWindow", "Clear"))
+        self.Number_0.setText(_translate("MainWindow", "1"))
+        self.Number_1.setText(_translate("MainWindow", "4"))
+        self.Number_2.setText(_translate("MainWindow", "7"))
+        self.Number_3.setText(_translate("MainWindow", "8"))
+        self.Number_4.setText(_translate("MainWindow", "5"))
+        self.Number_5.setText(_translate("MainWindow", "2"))
+        self.Number_6.setText(_translate("MainWindow", "9"))
+        self.Number_7.setText(_translate("MainWindow", "6"))
+        self.Number_8.setText(_translate("MainWindow", "3"))
+        self.Number_9.setText(_translate("MainWindow", "0"))
+        self.pushButton.setText(_translate("MainWindow", "Add"))
+        self.pushButton_2.setText(_translate("MainWindow", "Sub"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+

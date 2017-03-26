@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<style>
+		{{ include_raw('style.css') }}
+		</style>
+		<title>pineblog</title>
+	</head>
+
+	<body>
+	<div id="site-container">
+		<div id="header-and-content-wrap">
+		<div id="header-container">
+		<header>
+			<div id="header-main">
+			<div id="header-img">
+				<a href="/">
+				<img src="/static/assets/photo.jpg" height="160" title="me" alt="a photo of me" />
+				</a>
+			</div>
+			<div id="header-title">
+				<a id="header-pineblog" href="/">
+				<img id="header-title-pinecone" src="/static/assets/pinecone.jpg">
+				pineblog</a>
+				<p id="header-description">teen angst and general nonsense</p>
+			</div>
+			<hr />
+			</div> <!-- header-main -->
+
+			<div id="header-secondary">
+			{% from 'functions.html' import music %}
+			<div id="blogmusic">
+				<a href="#" onclick="loadBlogMusic()">
+				<span class="music-note">♫</span>
+				song of the times:
+				<span class="music-note">♫</span>
+				<br>
+				{{ music().strip() }}
+				</a>
+			</div>
+
+			<audio id="blogmusic-player" style="display:none;" controls preload="none">
+				<!-- of course chrome doesn't like .ogg... -->
+				<source src="/static/song.mp3" type="audio/mpeg">
+				<source src="/static/song.ogg" type="audio/ogg">
+				Your browser doesn't support the HTML5 audio tag.
+			</audio>
+			<hr />
+			</div> <!-- header-secondary -->
+
+			<div id="header-links">
+			<ul>
+				<li><a href="/about">about me</a></li>
+			</ul>
+			</div>
+
+		</header>
+		</div> <!-- header-container -->
+		<content>

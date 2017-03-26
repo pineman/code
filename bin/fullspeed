@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+	echo "run as root" 1>&2
+	exit 1
+fi
+
+echo level full-speed > /proc/acpi/ibm/fan
+#tlp ac
+#tpacpi-bat -s IC 1 1
+#xset -dpms

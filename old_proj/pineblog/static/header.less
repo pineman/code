@@ -1,0 +1,105 @@
+// ---- HEADER ----
+
+
+#header-and-content-wrap {
+	background-color: @background;
+	//margin-bottom: 25px;
+	//padding-bottom: 25px;
+	//.my-content-box-shadow(0px 5px 15px 5px);
+}
+
+#header-container {
+	background-color: @foreground;
+	.my-box-shadow(0px 4px 8px 3px);
+	-webkit-border-bottom-right-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+header {
+	display: block;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 0px 10px;
+	text-align: center;
+
+	hr {
+		border: 0;
+		height: 0;
+		border-top: 1px solid rgba(0, 0, 0, 0.5);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.01);
+	}
+
+	#header-main {
+		a {
+			border-bottom: none !important;
+		}
+		#header-img {
+			margin-top: 7px;
+			img {
+				.border-radius(80px);
+			}
+		}
+		#header-title {
+			margin-top: -20px;
+			#header-title-pinecone {
+				display: inline;
+				height: 63px;
+				margin-bottom: -15px;
+				margin-right: -10px;
+			}
+			// style the a directly, since we need inline
+			#header-pineblog {
+				font-size: 54px;
+			}
+			#header-description {
+				margin: -10px 0px 8px;
+				font-size: 15px;
+				font-style: italic;
+			}
+		}
+	}
+
+	#header-secondary {
+		#header-name {
+			margin-top: -11px;
+			font-size: 30px;
+		}
+		#header-sentence {
+			margin-top: -7px;
+			font-size: 13px;
+		}
+		.music-note {
+				display: inline;
+				font-size: 30px;
+		}
+		#blogmusic {
+			margin-top: -12px;
+			font-size: 18px;
+		}
+		#blogmusic-player {
+			margin-top: 10px;
+			margin-bottom: -3px;
+		}
+	}
+
+	#header-links {
+		margin-top: -6px;
+		li {
+			display: inline;
+			font-size: 20px;
+		}
+	}
+}
+
+// ---- MEDIA QUERIES ----
+/*
+#header-container {
+	@media (max-width: 580px) {
+		height: 100vh;
+	}
+}*/

@@ -1,0 +1,244 @@
+Got this from http://www-users.itlabs.umn.edu/classes/Fall-2003/csci2021/assignments/bomblab/bomblab.txt
+
+CSci 2021: Machine Architecture & Organization
+Lab3: Defusing the Binary Bomb
+Assigned: Wednesday, October 22, 2003      Due: November 6 by 11:59 PM
+
+Introduction
+
+The nefarious Dr.Evil planted binary bombs on our machines. A binary bomb is a 
+program that consists of a sequence of six phases. Each phase expects you to 
+type a particular string on stdin. If you type the correct string, then the 
+phase is defused and the bomb proceeds to the next phase. Otherwise the bomb 
+explodes by printing "BOOM!!!" and then terminating. The bomb is defused when 
+every phase has been defused.
+
+There are too many bombs for us to deal with, so we are giving each group a bomb 
+to defuse. Your mission, which you have no choice but to accept, is to defuse 
+the bomb before the due date. To have fun with your mission, you are recommended 
+to start as soon as possible. Good luck, and welcome to the bomb squad.
+
+Logistics
+
+Maximum Team Size: 2
+Teams could comprise members from different sections also.
+Each team gets a unique bomb.
+
+Step 1: Get your bomb
+
+A bomb is a linux binary executable file that has been compiled from a C program. 
+To obtain your group bomb, fill out the Bomb Request Form posted on the Assignments 
+page. Each of the team members will then receive an email from the TA in charge of 
+the lab, Mark Shaneck (shaneck@cs.umn.edu) with your linux binary bomb attached. 
+Each team is assigned a unique bomb with a "bomb-id" and you can find your bomb-id 
+in this email. Please make a note of your "bomb-id". You can make at the most 
+one request per team.
+
+Step 2: Defuse your bomb
+
+Once you receive your bomb, save it in a secure directory. Your job is to defuse this 
+bomb. There will be a total of six phases and a secret phase. The phases get 
+progressively harder to defuse, but the expertise you gain as you move from one phase 
+to another should offset this difficulty. The phases will be graded as follows:
+
+Phase 1: 5 points					Phase 6: 2 Extra Credits
+Phase 2: 15 points					Secret phase: 1 Extra Credits
+Phase 3: 20 points
+Phase 4: 25 points
+Phase 5: 35 points
+
+
+
+
+Getting Started
+
+1. You need to have executable permissions on the bomb. So, change the permissions.
+
+you@some-linux-host$ chmod 755 bomb
+
+2. Disassemble the binary code of the bomb using “objdump”. Redirect the output 
+to a file and save it so that you can refer to it. Printing out a copy of this assembly 
+code and analyzing it in the same way as we did during discussions will help you defuse 
+the bombs faster.
+
+you@some-linux-host$ objdump –d  bomb > assembly
+
+3. Look into the Advice section for more tips and ideas.
+
+Notes
+
+Very soon, you will be busy with the later phases of the bomb. You can avoid typing the 
+previous phase solutions by saving them in a text file (say, solution.txt) and by feeding 
+this text file to the bomb at command line. The bomb will read from the text file until 
+an EOF is encountered and then switch over to stdin. 
+
+You will need to learn how to single step through the assembly code and how to set 
+breakpoints. You will also need to inspect both the registers and the memory states. You 
+will master how to use debugger by the end of the lab. This is a crucial skill that will 
+pay big dividends through the rest of your career.
+ 
+Advice 
+
+There are many ways of defusing your bomb. You can examine it in great detail even without 
+running the program, and figure out exactly what it does. This is a useful technique, but 
+it is not always easy to do. You can also run it under a debugger, watch what it does step 
+by step, and use this information to defuse it. A combination of examining the code and then 
+using debugger at specific locations is the fastest way of defusing it.
+
+Please do not use brute force!! You could write a program that will try every possible key 
+to find the right one. But this is no good for the following reason:
+
+We haven't told you how long the strings are, nor have we told you what characters are in 
+them. Even if you made the (wrong) assumption that they all are less than 80 characters long, 
+and contain only alphabets, then you will have 2680 guesses for each phase. This will take a 
+very long time to run, and you will not get the answer before the assignment is due.
+
+There are many tools, which are designed to help you to figure out both how programs work, 
+and what is wrong when they don't work. Here is list of some of the tools you may find useful 
+in analyzing your bomb, and hints on how to use them.
+
+Tips and Tools
+
+* GDB, the GNU debugger, is a command line debugger tool available on virtually every platform. 
+You will get to use this tool in inspecting the bomb run.
+
+* you@some-linux-host$ objdump –t bomb
+
+This will print out the bomb’s symbol table. The symbol table includes the names of all the 
+global variables of the bomb, the names of all the functions the bomb calls, and their addresses. 
+You may find this useful to look when you start defusing it.
+
+* you@some-linux-host$ objdump –d bomb
+
+As discussed earlier, you can use this to disassemble the object code of the bomb. Reading the 
+assembly code can tell you how each of the phases work.
+
+* you@some-linux-host$ strings bomb
+
+This lists various strings used by your bomb. A pattern you are looking for might appear. But, 
+beware, there are too many strings and a brute force attempt would only cost you time and might 
+not be worth the effort.
+
+Useful GDB commands
+
+x address		Prints the value at the address location
+x /20b address 	Prints the next 20 bytes starting from the address
+x/20c address  		Prints the next 20 characters starting from the address
+p/x $reg		Prints the value stored in the register.
+			Example: p/x $eax will print the value of register %eax
+break name		Breaks at the beginning of the function name
+break *address		Breaks the execution at the address specified
+stepi			Executes one instruction 
+cont			Executes upto the next breakpoint and waits for user response
+run			To start the execution
+q			To quit debugger
+info			Help. Similar to man in Unix.
+
+
+A Sample Walk Through
+
+I have used a generic phase_1 to help you get started. The bomb you will receive will be 
+completely different. 
+Every C program starts with the first statement and ends with the last statement of the 
+main function. So, first look at the main function. Identify what functions are being 
+called and what the execution path is. 
+
+You will notice that once the bomb is initialized using initialize_bomb routine, the main 
+follows the same pattern to defuse all the phases - read from stdin, call the corresponding 
+phase and if the input matches, go to the next phase; else, call explode_bomb function and 
+the bomb explodes BOOM!!!!
+
+So using this, we understand that we have to look at the routines
+      phase_1
+      phase_2
+      phase_3
+      phase_4
+      phase_5
+      phase_6 
+      
+Sample Phase 1
+
+08048ab0 <phase_1>:
+08048ab0:	55                   	push   %ebp
+08048ab1:	89 e5                	mov    %esp,%ebp
+08048ab3:	68 80 95 04 08       	push   $0x8049580
+08048ab8:	ff 75 08             	pushl  0x8(%ebp)
+08048abb:	e8 ec 03 00 00       	call   8048eac <strings_not_equal>
+08048ac0:	83 c4 08             	add    $0x8,%esp
+
+Recall that arguments to the function are placed on the stack before the function is 
+called. Here observe that 0x8049580 and 0x8(%ebp) are pushed on to the stack and the 
+strings_not_equal routine is called. 
+
+ 8048ac3:	85 c0                	test   %eax,%eax
+ 8048ac5:	74 05                	je     8048acc <phase_1+0x1c>
+ 8048ac7:	e8 fc 07 00 00       	call   80492c8 <explode_bomb>
+ 8048acc:	c9                   	leave  
+ 8048acd:	c3                   	ret    
+ 8048ace:	89 f6                	mov    %esi,%esi
+
+Recall that the return value is generally placed in register %eax. The code here is 
+testing the value of register and if non-zero (i.e., if the strings passed in the above 
+routine strings_not_equal are not equal) then the function calls explode_bomb and the 
+bomb explodes. If equal it jumps to 0x8048acc, which is a return statement in assembly 
+language. 
+
+We can either look into strings_not_equal routine to identify the arguments passed or 
+look at the memory locations in this function itself and identify the strings passed.
+
+One of them is the string you entered, and the other one is the solution to the phase 1. 
+Hence we need to look the characters at locations 0x8049580 and *(0x8 + %ebp). Thus, the 
+strategy we will employ is: enter some random string so that you can identify the 
+location of the string it will be compared against.
+
+So start your gdb using
+
+you@some-linux-host$  gdb bomb
+
+(gdb) break phase_1
+
+and then start executing your program
+
+(gdb) run
+
+Starting program: /home/grad08/msang/2021/fall2002/lab3/bomb100/bomb
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+
+what is phase_1 solution?              this is my test string to find where it will be stored
+
+Breakpoint 1, 0x8048ab3 in phase_1 ()
+(gdb) x /30c 0x8049580
+0x8049580 <_IO_stdin_used+444>: 80 'P'  117 'u' 98 'b'  108 'l' 105 'i' 99 'c'  32 ' '  115 's'
+0x8049588 <_IO_stdin_used+452>: 112 'p' 101 'e' 97 'a'  107 'k' 105 'i' 110 'n' 103 'g' 32 ' 
+0x8049590 <_IO_stdin_used+460>: 105 'i' 115 's' 32 ' '  118 'v' 101 'e' 114 'r' 121 'y' 32 ' '
+0x8049598 <_IO_stdin_used+468>: 101 'e' 97 'a'  115 's' 121 'y' 46 '.'  0 '\000'
+
+(gdb) p/x $ebp
+$3 = 0xbffff100
+
+(gdb) x /30c *0xbffff108
+0x804b480 <input_strings>      :  119 'w' 104 'h' 97 'a'  116 't' 32 ' '  105 'i' 115 's' 32 ' '
+0x804b488 <input_strings+8>  :  112 'p' 104 'h' 97 'a'  115 's' 101 'e' 32 ' '  49 '1'  32 ' '
+0x804b490 <input_strings+16>:  115 's' 111 'o' 108 'l' 117 'u' 116 't' 105 'i' 111 'o' 110 'n'
+0x804b498 <input_strings+24>:   63 '?'  0 '\000'  0 '\000'   0 '\000'  0 '\000' 0 '\000'
+
+We notice that the solution string starts at location 0x8049580 and the input string from the 
+user is stored starting from location *0xbffff108
+
+Thus, the solution to the phase_1 is
+“Public speaking is very easy.”
+
+Note this down and run your bomb once again. Type this string as your input string and the phase_1 
+of the bomb is defused.
+
+The other phases are not so straight forward as above, but follow the same procedure as above to 
+identify the solutions to these phases. Use gdb efficiently. Don’t just go on doing stepi from 
+the first line of the code. First look at the assembly code and try to understand the pattern in 
+the code. Set your breakpoint at the exact location and look at the target register contents. Do 
+not start this homework before reading chapter 3 of the course text book “Computer Systems”.
+
+Start early and feel free to email your TAs if you need any help! 
+
+Best of luck and have fun!!!!
+
