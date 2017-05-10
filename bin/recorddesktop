@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Output file basename (extension is added after)
 output_basename="$HOME/x11grab-$(date +%s)"

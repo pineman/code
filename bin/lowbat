@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 percent=10
 
@@ -9,7 +9,7 @@ function test {
 		if [ "$status" = Discharging -a "$capacity" -lt $percent ]; then
 			logger "Critical battery threshold reached: hibernating."
 			notify-send -u critical "Critical battery threshold reached: hibernating." -i "battery" -a "lowbat.service"
-			sudo systemctl hybrid-sleep
+			sudo systemctl hibernate
 		fi
 	}
 }
