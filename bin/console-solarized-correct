@@ -28,9 +28,7 @@ S_cyan="2aa198"
 S_green="859900"
 
 if [ "$1x" == "lightx" ]; then
-
     # Light
-
     S_base03="fdf6e3"
     S_base02="eee8d5"
     S_base01="93a1a1"
@@ -40,9 +38,7 @@ if [ "$1x" == "lightx" ]; then
     S_base2="073642"
     S_base3="002b36"
 else
-
     # Dark
-
     S_base02="002b36"
     S_base03="073642"
     S_base01="586e75"
