@@ -12,22 +12,13 @@ $ cp FILE1 OUTFILE && comm -13 FILE1 FILE2 >> OUTFILE
 from sys import argv
 
 
-def diffcat(f1, f2, out):
-    with open(f1, 'r') as file1:
+def diffcat(filename1, filename2, outname):
+    with open(filename1, 'r') as file1:
         lines1 = file1.readlines()
 
-    with open(f2, 'r') as file2:
-        lines2 = file2.readlines()
-
-    with open(out, 'a+') as out_file:
-        for line in lines1:
-            out_file.write(line)
-
-        for line2 in lines2:
-            for line1 in lines1:
-                if line1 == line2:
-                    break
-            else:
+    with open(filename2, 'r') as file2, open(outname, 'a+') as out_file:
+        for line2 in file2:
+            if line2 not in lines1:
                 out_file.write(line2)
 
 
@@ -38,10 +29,10 @@ def usage():
 
 def main():
     try:
-        f1 = argv[1]
-        f2 = argv[2]
-        out = argv[3]
-        diffcat(f1, f2, out)
+        filename1 = argv[1]
+        filename2 = argv[2]
+        outname = argv[3]
+        diffcat(filename1, filename2, outname)
     except IndexError:
         usage()
 

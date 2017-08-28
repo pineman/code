@@ -4,25 +4,27 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from design import Ui_MainWindow
 
 class Calculator(QtWidgets.QMainWindow):
-	def __init__(self):
-		super().__init__()
+    def __init__(self):
+        super().__init__()
 
-		self.ui = Ui_MainWindow()
-		self.ui.setupUi(self)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
 
-		self.number_string = '0'
-		# falta-me criar o grupo dos botões no designer
-		for button in self.ui.digits.buttons():
-			button.clicked.connect(self.add_digit)
+        self.number_string = '0'
+        # falta-me criar o grupo dos botões no designer
+        for button in self.ui.digits.buttons():
+            button.clicked.connect(self.add_digit)
 
-		self.show()
+        self.show()
 
-	def add_digit(self):
-		number = self.sender()
-		self.ui.LCD.display(self.number_string)
+    def add_digit(self):
+        number = self.sender()
+        self.ui.LCD.display(self.number_string)
 
 
 if __name__ == "__main__":
-	app = QtWidgets.QApplication(sys.argv)
-	window = Calculator()
-	app.exec_()
+    app = QtWidgets.QApplication(sys.argv)
+    print(app.style().metaObject().className())
+    print(QtWidgets.QStyleFactory.keys())
+    window = Calculator()
+    app.exec_()

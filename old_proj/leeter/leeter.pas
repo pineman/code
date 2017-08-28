@@ -70,6 +70,7 @@ begin
 			'i','I': conv:=conv + '1';
 			'e': conv:=conv + '3';
 			'z', 'Z': conv:=conv + 'zZ';
+			'w', 'W': conv:=conv + '\/\/';
 		else conv:=conv + e[i];
 		end;
 	convert_text:=conv;

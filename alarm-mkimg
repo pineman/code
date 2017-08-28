@@ -1,0 +1,20 @@
+#!/bin/sh -ex
+wget -N http://archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz
+truncate -s 2G alarm.img
+losetup /dev/loop18 alarm.img
+parted -s /dev/loop18 mklabel msdos
+parted -s /dev/loop18 unit MiB mkpart primary fat32 -- 1 34
+parted -s /dev/loop18 set 1 boot on
+parted -s /dev/loop18 unit MiB mkpart primary ext4 -- 34 -1
+parted -s /dev/loop18 print
+mkfs.vfat /dev/loop18p1
+mkfs.ext4 /dev/loop18p2
+mkdir -p arch-boot
+mount /dev/loop18p1 arch-boot
+mkdir -p arch-root
+mount /dev/loop18p2 arch-root
+bsdtar -xpf ArchLinuxARM-rpi-2-latest.tar.gz -C arch-root
+sed -i "s/ defaults / defaults,noatime /" arch-root/etc/fstab
+mv arch-root/boot/* arch-boot/
+umount arch-boot arch-root
+losetup -d /dev/loop18

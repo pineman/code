@@ -1,5 +1,7 @@
 # folder for code I download from the internet
 git
+proj
+pkg
 
 **__pycache__**
 a.out
