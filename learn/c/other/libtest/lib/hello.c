@@ -5,5 +5,5 @@ void hello(void)
 {
 	puts("Hello from libhello!");
 
-	return;
+	printf("sizeof(s) = %zd\n", sizeof s);
 }
