@@ -1,0 +1,33 @@
+[submodule "proj/abra"]
+	path = proj/abra
+	url = ssh://git@github.com/pineman/abra.git
+[submodule "proj/blackjack"]
+	path = proj/blackjack
+	url = ssh://git@github.com/pineman/blackjack.git
+[submodule "proj/wordmorph"]
+	path = proj/wordmorph
+	url = ssh://git@github.com/pineman/wordmorph.git
+[submodule "proj/wordfind"]
+	path = proj/wordfind
+	url = ssh://git@github.com/pineman/wordfind.git
+[submodule "proj/LEDmatrix"]
+	path = proj/LEDmatrix
+	url = ssh://git@github.com/hackerschool/ledmatrix.git
+[submodule "proj/r2p"]
+	path = proj/r2p
+	url = ssh://git@github.com/hackerschool/r2p.git
+[submodule "proj/mc"]
+	path = proj/mc
+	url = ssh://git@github.com/joajfreitas/mc.git
+[submodule "proj/mc2"]
+	path = proj/mc2
+	url = ssh://git@github.com/joajfreitas/mc2.git
+[submodule "proj/et"]
+	path = proj/et
+	url = ssh://git@github.com/joajfreitas/et.git
+[submodule "proj/st-bloated"]
+	path = proj/st-bloated
+	url = ssh://git@github.com/pineman/st-bloated.git
+[submodule "proj/i3status"]
+	path = proj/i3status
+	url = ssh://git@github.com/pineman/i3status.git
