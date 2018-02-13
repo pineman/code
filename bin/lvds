@@ -1,6 +1,6 @@
 #!/bin/sh
 
-xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off --output HDMI1 --off
+xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off --output HDMI1 --off --output HDMI2 --off
 #feh --no-fehbg --bg-fill "$HOME/.background.jpg"
 pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
 xset +dpms

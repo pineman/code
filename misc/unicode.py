@@ -1,4 +1,6 @@
-for i in range(__import__('sys').maxunicode + 1):
+import sys
+
+for i in range(255):
     try:
         print(f"\\U{i:08X}", end=' ')
         eval(f"print('\\U{i:08X}')")

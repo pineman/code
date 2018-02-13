@@ -1,0 +1,10 @@
+# Ctrl + Alt + backspace to kill the X server
+setxkbmap -option terminate:ctrl_alt_bksp
+
+# Swap escape and caps lock
+setxkbmap -option caps:swapescape
+#setxkbmap -option altwin:swap_alt_win
+
+xset r rate 150 50
+setxkbmap -option caps:swapescape
+xmodmap ~/.Xmodmap

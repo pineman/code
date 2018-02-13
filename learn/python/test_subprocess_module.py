@@ -63,7 +63,8 @@ def versus(arg):
     os.system('ls ' + arg)
     print("")
 
-    print(check_output(arg).decode('utf-8'))
+    #print(check_output(arg).decode('utf-8'))
+    print(popen(arg).decode('utf-8'))
 
 
 def main():

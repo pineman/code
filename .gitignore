@@ -1,7 +1,6 @@
-# folder for code I download from the internet
-git
-proj
 pkg
+git
+!git/.keep
 
 **__pycache__**
 a.out
