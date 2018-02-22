@@ -25,3 +25,6 @@
 [submodule "proj/pyinstaller"]
 	path = proj/pyinstaller
 	url = ssh://git@github.com/pineman/pyinstaller.git
+[submodule "old_proj/pyreplify"]
+	path = old_proj/pyreplify
+	url = git@github.com:pineman/pyreplify
