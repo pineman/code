@@ -6,3 +6,6 @@ git
 a.out
 *.o
 .dummy
+
+proj/go
+!proj/go/src/github.com/pineman
