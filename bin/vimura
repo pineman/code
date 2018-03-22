@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Only sets g:syncpdf on gvim for some reason??
+zathura -x "gvim --servername $1 -c \"let g:syncpdf='$1'\" --remote +%{line} %{input}" $*

@@ -24,6 +24,7 @@ func concurrent() {
 			fmt.Printf("this is goroutine #%02v doing %v iterations!\n", number, n)
 
 			for j := 0; j < n; j++ {
+				// Should change to some other computation!
 				sha256.Sum256([]byte("ASDFASDF"))
 			}
 
