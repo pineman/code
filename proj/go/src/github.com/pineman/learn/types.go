@@ -7,15 +7,21 @@ import (
 )
 
 var (
-	ToBe   bool = false
-	MaxInt uint64
-	Z      complex128 = cmplx.Sqrt(-5 + 12i)
+	ToBe bool = false
+	MaxInt uint64 = 1<<64 - 1
+	Z complex128 = cmplx.Sqrt(-5 + 12i)
+	Str string = "hello!"
+	Char rune = '😃' // rune is aliased to int32.
+	TwoNibbles byte = 255
 )
 
 func main() {
 	fmt.Printf("Type: %T, Value: %v\n", ToBe, ToBe)
 	fmt.Printf("Type: %T, Value: %v\n", MaxInt, MaxInt)
 	fmt.Printf("Type: %T, Value: %v\n", Z, Z)
+	fmt.Printf("Type: %T, Value: %v\n", Str, Str)
+	fmt.Printf("Type: %T, Value: %U\n", Char, Char)
+	fmt.Printf("Type: %T, Value: %v\n", TwoNibbles, TwoNibbles)
 
 	// Type conversions (must be explicit)
 	x, y := 3, 4

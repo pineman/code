@@ -6,7 +6,7 @@ function test {
 	acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
 		read -r status capacity
 
-		if [ "$status" = Discharging -a "$capacity" -lt $percent ]; then
+		if [ "$status" = "Discharging" -a "$capacity" -lt "$percent" ]; then
 			logger "Critical battery threshold reached: hibernating."
 			notify-send -u critical "Critical battery threshold reached: hibernating." -i "battery" -a "lowbat.service"
 			sudo systemctl hibernate
