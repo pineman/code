@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-c -g -Wall -Wextra -pedantic -I../include -fPIC
+CFLAGS=-c -g -Wall -Wextra -pedantic -I../include
 LDFLAGS=-shared
 
 all:
