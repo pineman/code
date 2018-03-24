@@ -1,10 +1,5 @@
 #!/bin/sh
-if [[ $EUID -ne 0 ]]; then
-	echo "run as root" 1>&2
-	exit 1
-fi
-
-echo level auto > /proc/acpi/ibm/fan
+echo level auto | sudo tee /proc/acpi/ibm/fan
 #tlp bat
 #tpacpi-bat -s IC 1 0
 #xset +dpms
