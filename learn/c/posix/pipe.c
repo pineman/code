@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 #include <errno.h>
-#include <time.h>
 #include <limits.h>
 #include <stdint.h>
 #include <string.h>
+#include <time.h>
+
+#define chk_perror() { if (errno) { fprintf(stderr, "%s:%d errno = %d: %s\n", __FILE__, __LINE__-1, errno, strerror(errno)); exit(errno); } }
 
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -32,8 +35,9 @@ void child_process(int pipefd[2])
 		errno = 0;
 		read_ret = read(pipefd[0], &int_buf, sizeof(int));
 		printf("child %d: read returned %zd\n", pid, read_ret);
-		if (read_ret == 0) { break; }
-		if (errno) { perror("child"); exit(errno); };
+		if (read_ret == 1) chk_perror();
+
+		if (read_ret == 0) { break; } // Parent closed its write end
 		sprintf(tmp_buf, " %d", int_buf);
 		strcat(buf, tmp_buf);
 		usleep(random() % 500000);
@@ -55,7 +59,7 @@ void parent_process(int num_children, int pipefd[2])
 		errno = 0;
 		write_ret = write(pipefd[1], &i, sizeof(int));
 		printf("parent: write returned %zd\n", write_ret);
-		if (errno) { perror(""); exit(errno); };
+		if (write_ret == 1) chk_perror();
 	}
 	close(pipefd[1]);
 	puts("parent: closed write pipe");
@@ -72,6 +76,7 @@ unsigned long str_to_ulong(const char *str, const unsigned long max)
 {
 	char *check = NULL;
 	unsigned long res = strtoul(str, &check, 10);
+	chk_perror();
 	if (check == str || res > max) {
 		puts("Invalid str_to_ulong");
 		exit(1);
@@ -88,18 +93,16 @@ int main(int argc, char *argv[])
 
 	unsigned long num_children = str_to_ulong(argv[1], NUM_CHILDREN_MAX);
 
-	// TODO: open pipe
 	int pipefd[2];
-	errno = 0;
-	pipe(pipefd);
-	if (errno) { perror(""); exit(errno); };
+	int s;
+	s = pipe(pipefd);
+	if (s == -1) chk_perror();
 
 	pid_t pid;
-	unsigned int i; // Save i to pass to child_process later as it is the child's unique "number"
-	for (i = 0; i < num_children; i++) {
+	for (int i = 0; i < num_children; i++) {
 		errno = 0;
 		pid = fork();
-		if (errno) { perror(""); exit(errno); }
+		if (pid == -1) chk_perror();
 		if (pid == 0) {
 			break; // don't continue fork()ing if we're a child
 		}
