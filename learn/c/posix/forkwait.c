@@ -9,8 +9,6 @@
 
 int main(int argc, char *argv[])
 {
-	setlocale(LC_ALL, "");
-
 	printf("before fork: pid is %d\n", getpid());
 	pid_t pid;
 	pid = fork();
