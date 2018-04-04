@@ -40,7 +40,7 @@ void child_process(int pipefd[2])
 		if (read_ret == 0) { break; } // Parent closed its write end
 		sprintf(tmp_buf, " %d", int_buf);
 		strcat(buf, tmp_buf);
-		usleep(random() % 500000);
+		if (random() % 5 == 4) sleep(1);
 	}
 	close(pipefd[0]);
 	printf("child %d: closed read pipe\n", pid);
