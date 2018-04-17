@@ -1,22 +1,30 @@
-close all
-clear
-clc
+clear; clc
 %% Signal (approximately continuous time)
-tmin = -1;
-tmax = 1;
-dt = 0.0001;
+tmin = -3;
+tmax = 3;
+dt = 1e-3;
 t = tmin : dt : tmax - dt;
+
+function y = signal(t)
+	%y = rectpuls(t);
+	y = cos(4*pi*t);
+end
 x = signal(t);
 
 %% Sampling
-fs = 100; % Sampling frequency
+fs = 1; % Sampling frequency
 Ts = 1/fs; % Sampling period
 nmin = ceil(tmin / Ts); % Number of samples from t < 0
 nmax = floor(tmax / Ts); % Number of samples from t > 0
-n = nmin:nmax; % Sample numbers [only n*Ts is time]
+n = nmin:nmax; % Sample numbers [time is n*Ts]
 xn = signal(n*Ts); % Sample the signal at n*Ts seconds (every Ts seconds)
-N = length(n); % Number of samples
+N = length(n) % Number of samples
 
+figure;
+hold on;
+plot(t, x);
+stem(n*Ts, xn);
+%{
 %% Frequency transform
 % MATLAB's fft() computes the DFT
 df = fs/N; % Frequency bins
@@ -31,20 +39,21 @@ X_real = real(X);
 X_imag = imag(X);
 
 %% Plots
-figure('Name','FT - Magnitude','NumberTitle','off');
+figure('Name','DFT - Magnitude','NumberTitle','off');
 stem(f, X_mag);
 axis([-5 5 -0.1 0.6]);
-figure('Name','FT - Phase','NumberTitle','off');
+figure('Name','DFT - Phase','NumberTitle','off');
 stem(f, X_phase);
 axis([-5 5 -pi pi]);
-figure('Name','FT - Real Part','NumberTitle','off');
+figure('Name','DFT - Real Part','NumberTitle','off');
 stem(f, X_real);
 axis([-5 5 -0.1 0.6]);
-figure('Name','FT - Imaginary Part','NumberTitle','off');
+figure('Name','DFT - Imaginary Part','NumberTitle','off');
 stem(f, X_imag);
 axis([-5 5 -0.6 0.6]);
-figure('Name','Inverse Transform vs. Signal','NumberTitle','off');
-hold on;
-plot(t, x);
-stem(n*Ts, xn);
-stem(n*Ts, ifft(ifftshift(X))*N);
+%figure('Name','Inverse Transform vs. Signal','NumberTitle','off');
+%hold on;
+%plot(t, x);
+%stem(n*Ts, xn);
+%stem(n*Ts, ifft(ifftshift(X))*N);
+%}
