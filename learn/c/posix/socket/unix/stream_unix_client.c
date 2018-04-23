@@ -65,8 +65,8 @@ int main(void)
 
 	r = close(s);
 	if (r == -1) mperror();
-	r = unlink(addr.sun_path);
-	if (r == -1) mperror();
+	//r = unlink(addr.sun_path);
+	//if (r == -1) mperror();
 
 	return EXIT_SUCCESS;
 }

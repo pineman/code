@@ -8,7 +8,7 @@
 #include <time.h>
 #include <stddef.h>
 
-#define mperror() { fprintf(stderr, "%s:%d errno = %d: %s\n", __FILE__, __LINE__-1, errno, strerror(errno)); exit(errno); }
+#define eperror(r) { fprintf(stderr, "%s:%d errno = %d: %s\n", __FILE__, __LINE__-1, r, strerror(r)); exit(r); }
 
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -23,7 +23,7 @@ int main(void)
 	int s;
 
 	s = socket(AF_INET, SOCK_STREAM, 0);
-	if (s == -1) mperror();
+	if (s == -1) eperror(errno);
 
 	struct sockaddr_in local_addr;
 	//local_addr.sin_family = AF_INET;
@@ -32,20 +32,20 @@ int main(void)
 	socklen_t local_addrlen = sizeof(struct sockaddr_in);
 
 	//r = bind(s, (struct sockaddr *) &local_addr, local_addrlen);
-	//if (r == -1) mperror();
+	//if (r == -1) eperror(errno);
 
 	r = listen(s, SOMAXCONN);
-	if (r == -1) mperror();
+	if (r == -1) eperror(errno);
 
 	r = getsockname(s, (struct sockaddr *) &local_addr, &local_addrlen);
-	if (r == -1) mperror();
+	if (r == -1) eperror(errno);
 	printf("unbound listening socket - address: %s port: %d\n", inet_ntoa(local_addr.sin_addr), ntohs(local_addr.sin_port));
 
-	int c = s.accept();
-	if (c == -1) mperror();
+	int c = accept(s, NULL, NULL);
+	if (c == -1) eperror(errno);
 
 	r = close(s);
-	if (r == -1) mperror();
+	if (r == -1) eperror(errno);
 
 	return EXIT_SUCCESS;
 }

@@ -16,12 +16,13 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
+
 int main(void)
 {
 	int r;
 	int s;
 
-	s = socket(AF_UNIX, SOCK_STREAM, 0);
+	s = socket(AF_INET, SOCK_STREAM, 0);
 	if (s == -1) mperror();
 
 	struct sockaddr_un addr;
