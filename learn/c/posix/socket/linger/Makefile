@@ -5,7 +5,7 @@
 CFLAGS=-g -Wall -Wextra -pedantic
 CPPFLAGS=
 LDFLAGS=
-CC=gcc
+CC=cc
 SRC=
 EXEC=
 
