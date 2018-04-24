@@ -19,7 +19,7 @@
 
 #include <pthread.h>
 
-#define NUM_THREADS 2
+#define NUM_THREADS 400
 
 struct thread_arg {
 	pthread_t thread_id;
@@ -44,21 +44,21 @@ void *thread_function(void *arg)
 		targ->thread_no, p, (int) targ->thread_id, must_be_true);
 
 	char *ret = malloc(1);
-	*ret = (char) (rand() % ('z' - 'A') + 'A');
 	srand(t);
+	*ret = (char) (rand() % ('z' - 'A') + 'A'); // TODO: rand not thread safe
 
-	int tot = 0, r;
-	ssize_t size = 16;
+	int r;
+	ssize_t size = 1000;
 	char *buf = malloc(size);
 	for (int i = 0; i < size; i++) {
 		buf[i] = *ret;
 	}
-	for (int i = 0; i < 100000; i++) {
+	//sleep(targ->thread_no);
+	for (int i = 0; i < 10; i++) {
 		r = write(s, (void *) buf, size);
 		if (r == -1) eperror(errno);
-		tot += r;
+		printf("thread %d wrote %d * %c\n", targ->thread_no, r, *ret);
 	}
-	printf("thread %d wrote %d * %c\n", targ->thread_no, tot, *ret);
 
 	return (void *) ret;
 }
