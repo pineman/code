@@ -19,12 +19,14 @@
 
 #include <pthread.h>
 
-#define NUM_THREADS 400
+#define NUM_THREADS 2
 
 struct thread_arg {
 	pthread_t thread_id;
 	int thread_no;
 };
+
+pthread_mutex_t mutex;
 
 int s;
 
@@ -48,14 +50,19 @@ void *thread_function(void *arg)
 	*ret = (char) (rand() % ('z' - 'A') + 'A'); // TODO: rand not thread safe
 
 	int r;
-	ssize_t size = 1000;
+	ssize_t size = 100000;
 	char *buf = malloc(size);
 	for (int i = 0; i < size; i++) {
 		buf[i] = *ret;
 	}
 	//sleep(targ->thread_no);
-	for (int i = 0; i < 10; i++) {
+	for (;;) {
+		r = pthread_mutex_lock(&mutex);
+		if (r != 0) eperror(r);
+
 		r = write(s, (void *) buf, size);
+		r = pthread_mutex_unlock(rmutex);
+		if (r != 0) eperror(r);
 		if (r == -1) eperror(errno);
 		printf("thread %d wrote %d * %c\n", targ->thread_no, r, *ret);
 	}
@@ -82,6 +89,9 @@ int main(int argc, char *argv[])
 	r = connect(s, (struct sockaddr *) &dest_addr, dest_addrlen);
 	if (r == -1) eperror(errno);
 
+	r = pthread_mutex_init(&mutex, NULL);
+	if (r != 0) eperror(r);
+
 	for (int t = 0; t < NUM_THREADS; t++) {
 		targs[t].thread_no = t;
 		/* The pthread_create() call stores the thread ID into corresponding
@@ -103,6 +113,9 @@ int main(int argc, char *argv[])
 
 	close(s);
 	free(targs);
+
+	r = pthread_mutex_destroy(&mutex);
+	if (r != 0) eperror(r);
 
 	return EXIT_SUCCESS;
 }
