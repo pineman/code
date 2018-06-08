@@ -48,14 +48,13 @@ void *thread_function(void *arg)
 	*ret = (char) (rand() % ('z' - 'A') + 'A'); // TODO: rand not thread safe
 
 	int r;
-	ssize_t size = 100000;
+	size_t size = 512;
 	char *buf = malloc(size);
 	for (int i = 0; i < size; i++) {
 		buf[i] = *ret;
 	}
 	//sleep(targ->thread_no);
 	for (;;) {
-
 		r = write(s, (void *) buf, size);
 		if (r == -1) eperror(errno);
 		printf("thread %d wrote %d * %c\n", targ->thread_no, r, *ret);
