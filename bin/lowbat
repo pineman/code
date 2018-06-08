@@ -1,6 +1,6 @@
 #!/bin/sh
 
-percent=10
+percent=11
 
 function test {
 	acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
