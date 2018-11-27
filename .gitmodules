@@ -16,15 +16,9 @@
 [submodule "proj/r2p"]
 	path = proj/r2p
 	url = ssh://git@github.com/hackerschool/r2p.git
-[submodule "proj/st-bloated"]
-	path = proj/st-bloated
-	url = ssh://git@github.com/pineman/st-bloated.git
-[submodule "proj/i3status"]
-	path = proj/i3status
-	url = ssh://git@github.com/pineman/i3status.git
-[submodule "proj/pyinstaller"]
-	path = proj/pyinstaller
-	url = ssh://git@github.com/pineman/pyinstaller.git
+[submodule "proj/psis"]
+	path = proj/psis
+	url = git@github.com:pineman/psis
 [submodule "old_proj/pyreplify"]
 	path = old_proj/pyreplify
 	url = git@github.com:pineman/pyreplify
