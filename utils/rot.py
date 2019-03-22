@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import sys
 
 S = "".join([l for l in open(sys.argv[1], 'r')])

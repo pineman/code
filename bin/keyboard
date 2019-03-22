@@ -2,6 +2,7 @@
 setxkbmap -option caps:swapescape
 #setxkbmap -option altwin:swap_alt_win
 
-xset r rate 150 50
+#xset r rate 120 70
+xset r rate 140 55
 setxkbmap -option caps:swapescape
 xmodmap ~/.Xmodmap

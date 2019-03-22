@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from os import system
 from time import sleep
 from sys import argv

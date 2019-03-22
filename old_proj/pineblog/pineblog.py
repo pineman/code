@@ -231,4 +231,4 @@ import atexit
 atexit.register(log, 'Exited.')
 
 if __name__ == '__main__':
-	pineblog.run(debug=True, host='0.0.0.0', port=8080)
+	pineblog.run(debug=False, host='0.0.0.0', port=8080)

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Script to manage Conky.
 Give conky the necessary information (by printing it)

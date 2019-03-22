@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Little script to do some file renaming and things.
 WHY IS EVERYTHING SO CONVOLUTED
