@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """
 Initial prototype for super cyberpunk text-based game!
 """
