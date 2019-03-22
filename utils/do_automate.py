@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
 Script to automate actions on Digital Ocean droplets.
 TODO:

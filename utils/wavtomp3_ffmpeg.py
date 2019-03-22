@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """
 Convert .wav files to .mp3 using ffmpeg.
 TO DO: Make this a command line tool, using argparse module.

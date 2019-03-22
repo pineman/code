@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
 Script to watch and fix server persmissions for all users.
 
@@ -25,7 +24,7 @@ DIRS = {PINEMAN:'pineman', ALMIRO:'almiro', ALMIRO_DATA:'almiro', OWNCLOUD:'pine
 
 def log(logstring):
 	date = sh('date +%d/%m/%Y\ %T').strip()
-	with open('/home/pineman/logs/permissions.log', 'a') as logfile:	
+	with open('/home/pineman/logs/permissions.log', 'a') as logfile:
 		logfile.write('[{0}] {1} \n'.format(date, logstring))
 	logfile.close()
 
@@ -93,13 +92,13 @@ def main():
 
 	wm = pyinotify.WatchManager()
 	mask = pyinotify.IN_MODIFY | pyinotify.IN_CREATE | pyinotify.IN_CLOSE_WRITE
-	
+
 	handler = EventHandler()
 	notifier = pyinotify.Notifier(wm, handler, timeout=10)
 
 	for dir in DIRS.keys():
 		wm.add_watch(dir, mask, rec=True)
-	
+
 	while True:
 		check_events(notifier)
 		time.sleep(5)

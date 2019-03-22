@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# vim: ts=4 sts=4 sw=4 et
-
 """
 Tool to merge two files by their different lines.
 
@@ -39,3 +36,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# vim: ts=4 sts=4 sw=4 et

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Script to make playlists of each folder on my music collection
 """
