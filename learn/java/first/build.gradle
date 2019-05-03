@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'io.spring.dependency-management' version "1.0.6.RELEASE"
+}
+
+group 'win.pineman.first'
+version '1.0-SNAPSHOT'
+
+mainClassName = 'win.pineman.first.First'
+//jar {
+//    manifest {
+//        attributes(
+//                'Main-Class': mainClassName
+//        )
+//    }
+//}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile 'io.javalin:javalin:2.8.0'
+    compile "com.sparkjava:spark-core:2.8.0"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
