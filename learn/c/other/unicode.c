@@ -12,5 +12,7 @@ int main(int argc, char *argv[])
 	printf("%ls, length: %zd\n", test, wcslen(test));
 	printf("%ls, length: %zd\n", test2, wcslen(test2));
 
+	printf("%s, length: %d\n", "豈", strlen("盧"));
+
 	return EXIT_SUCCESS;
 }
