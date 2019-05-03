@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/pineman
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.pineman.win
+  * I am pineman (https://keybase.io/pineman) on keybase.
+  * I have a public key with fingerprint CE26 09DC F2E6 75F8 25AF  4956 CA43 9ECD 5D4F 3704
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "010134afdf48214b783ef06ead39edc66a228f05de7168082fb95f02d97a55a79e7e0a",
+      "fingerprint": "ce2609dcf2e675f825af4956ca439ecd5d4f3704",
+      "host": "keybase.io",
+      "key_id": "ca439ecd5d4f3704",
+      "kid": "010134afdf48214b783ef06ead39edc66a228f05de7168082fb95f02d97a55a79e7e0a",
+      "uid": "4d407cdabbedb077c774152300435b19",
+      "username": "pineman"
+    },
+    "service": {
+      "hostname": "www.pineman.win",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1517444615,
+  "expire_in": 157680000,
+  "prev": "92b1d8bdacb918d9d8e1c7c69c7c00aca31e2f5e940fc527c0b3868489dcecea",
+  "seqno": 18,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.76
+Comment: https://keybase.io/crypto
+
+yMNFAnicrZJtUFRVGMcXMLRlQAUcaphwuqOsyNu9d+8rFL6ss4AuOopBELncl3OX
+G3B33V1YlgWEcbDVzIklZwhbZKaSbd3SHNNwLFomCgWySMERxXEoTaamcsZarKSz
+DH3rY+fDOXOe8/v/z/M853wRG6VSR1zW9Yy9vINeEjES7K5TlVv3LHUhvFl0Ijku
+pBosLKBGBDa7sVoWkRwExVBMS3CSKBEMjhE8zWiBhFKAE7UsEAWK4nCckVBSBDRG
+MSiDSzxLSigusjRHkhzNAhqgHJKBSLJiAlaLVVbs0FYAOIWyoiDhgKJJicFJTiJY
+khI4AvoKIikSkpZGCSisMtvCCpgcz9lAlmyGMbgxLqT3H/z/nHfdgh0hEigtiBzP
+A5FHaVqgaQIjcS2KElqSx9gwaANWhasFkLbICqjlFKQ5A4HBelkA4b6GC1kEHA5H
+1iKU5ZAVqLZYzXazYK6Bh1V2u8WWExbbnZYFGvDGRR8jLysi7CRU1AOrTTYrSA4G
+ScEuh40xEqMJgqAwMgMBDRbZCoxymCBpWCMc4XtAPbRkcR4TGV7kBJ7FGJEVGYAJ
+tECxcEJRTuC0GMAlErAEKgkkDoO8lqEYgoFvBgQQbowN7FXM0JuBeXIm6GmTTQpn
+r7MCpHkwWLFEFaFWRT8RGf5iKvWTK/79eMfurFB5XatTTgeZC6rb5RqlxpO8af39
+hK9XTQTWH1Rrrguz6e6hkkspjQfmx/KTZjN8/kcbfezwUFbueKT/R5Ppu7/NK+N8
+RXnxE4+HB/I0JiJFJIudE29HtfSlxbqzvIGK6efnzzw47QgFfisY8F0KPjy0sTV7
+82D60UDM4cNN8/pgacymooSe8ty2xO2DvssPu9TYHq59zk2E5n4lPo6Nbix8FJqK
+65GeM1xMd95s7XpqWLPlYn2g16l7fO6jn3szr/YVua8VDHgDnV9Fa3IjM0cytxbO
+5Kau7T57Ru89cKNNnz+i+SDxhxB94RXTjmXlrpPfFpaVrYzhmbSCK7dMWxpKI7v3
+N1SEIjq+SR87u6v//PZ340vi3nJubTvB3J65f6cr+hMFXfdGRuWovepmMAX3eFo6
+rO1JzRsm+/d+OHpd1zL3paGjaGr5H9uaMudfm0irBPrPWhKHT+jvPv0sODVdWtv8
+uWZIR7vW6brZK5+O3vhps7cTjS9G0NniPw018s7dq1e9s/uv7Mr3LYZxVcXcNYOx
+yZUdSx6f/mXnmx4hLXHtqVejkrpal/YH9lf3HbTnJ+PG0WPnzvemNt37/qUj5oSy
+B+Pdqaah9s6WNWCX5717CZMv9Ff6J4/HBallG/ZdPUlUTCnuvJK7VbnLZ5pvlci/
+x+17kbbVrUlu5JKrjzyj8vtf/wcO1rek
+=dXMT
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/pineman
+
+==================================================================
+
