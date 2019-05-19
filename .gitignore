@@ -9,3 +9,6 @@ a.out
 
 proj/go
 !proj/go/src/github.com/pineman
+
+ctf
+learn/qt/qml
