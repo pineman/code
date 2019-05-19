@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 export HOST=x86_64-w64-mingw32
 export CC=$HOST-gcc
 export CXX=$HOST-g++
