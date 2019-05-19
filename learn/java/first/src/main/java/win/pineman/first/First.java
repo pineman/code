@@ -21,8 +21,20 @@ public class First {
     public static void main(String[] args) {
         System.out.println(publicStaticField);
         System.out.println();
-        First a = new First(49);
-        System.out.println(a);
+        First anObject = new First(49);
+        System.out.println(anObject);
+        short a = 2;
+        int b = 3;
+        anObject.printType(a);
+        anObject.printType(b);
+        anObject.printType(a - 1);
+    }
+
+    void printType(short i) {
+        System.out.println(i + " Is a short");
+    }
+    void printType(int i) {
+        System.out.println(i + " Is an int");
     }
 
     /**
