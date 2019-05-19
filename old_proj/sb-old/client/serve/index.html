@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>memeboard</title>
+	<link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+	<meta name="author" content="João Pinheiro">
+	<meta name="description" content="Meme soundboard: always have your memes at hand!">
+	<meta name="keywords" content="meme soundboard sound">
+</head>
+
+<body>
+	<header>
+		<h1 id="title">Meme soundboard</h1>
+		<div id="upload-button">upload</div>
+	</header>
+
+	<div id="buttons">
+	</div>
+
+	<div id="upload-screen">
+		<form action="/upload" method="post" enctype="multipart/form-data">
+			<input type="file" name="audio" accept=".mp3,.ogg,audio/mpeg,audio/ogg">
+			<input type="text" name="name">
+			<input type="submit" value="Upload">
+		</form>
+	</div>
+
+	<footer>
+		<p>a <a href="https://www.pineman.win">pineman</a> creation</p>
+		<p><a href="">source</a></p>
+	</footer>
+</body>
+</html>

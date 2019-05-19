@@ -1,3 +1,0 @@
-#!/bin/bash
-killall telegram-deskto
-$(telegram-desktop &>/dev/null &)

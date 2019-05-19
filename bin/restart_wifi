@@ -1,2 +1,3 @@
 #!/bin/sh
+# Restart broadcom wifi module
 sudo modprobe -r wl && sudo modprobe wl

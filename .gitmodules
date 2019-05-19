@@ -22,3 +22,9 @@
 [submodule "old_proj/pyreplify"]
 	path = old_proj/pyreplify
 	url = git@github.com:pineman/pyreplify
+[submodule "proj/homepage"]
+	path = proj/homepage
+	url = ssh://git@github.com/pineman/homepage.git
+[submodule "proj/desu"]
+	path = proj/desu
+	url = ssh://git@github.com/pineman/desu.git
