@@ -20,15 +20,16 @@ func concurrent() {
 			defer wg.Done()
 
 			//var n = rand.Int() % 10000000
-			var n = number * number * 100000
+			//var n = math.Pow(number, 2)
+			var n = number * number
 			fmt.Printf("this is goroutine #%02v doing %v iterations!\n", number, n)
 
 			for j := 0; j < n; j++ {
-				// Should change to some other computation!
+				// TODO: get random bytes
 				sha256.Sum256([]byte("ASDFASDF"))
 			}
 
-			fmt.Printf("goroutine #%02v\n", number)
+			fmt.Printf("goroutine #%02v done\n", number)
 		}(i)
 	}
 	wg.Wait()

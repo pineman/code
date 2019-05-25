@@ -1,5 +1,5 @@
 // Package stringutil contains utility functions for working with strings.
-package stringutil
+package stringutil // import "github.com/pineman/stringutil"
 
 import "fmt"
 
