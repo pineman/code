@@ -43,24 +43,20 @@ int main(const int argc, const char **argv)
 	if (errno) goto error;
 
 	int s = 0, r = 0;
-	bool upper = false;
 	for (int j = 0; j < 26; j++) {
 		printf("\nrot%d:------------------------------------------------\n", j);
 
 		for (int i = 0; i < fsz; i++) {
 			if (S[i] >= 'A' && S[i] <= 'Z') {
-				upper = true;
+				r = 'A';
 			}
 			else if (S[i] >= 'a' && S[i] <= 'z') {
-				upper = false;
+				r = 'a';
 			}
 			else {
 				printf("%c", S[i]);
 				continue;
 			}
-
-			if (upper) r = 'A';
-			else r = 'a';
 
 			s = ((int) S[i]) - r;
 			s = (s + j) % 26 + r;
