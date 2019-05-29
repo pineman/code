@@ -1,4 +1,5 @@
 pkg
+ctf
 git
 !git/.keep
 
@@ -13,7 +14,6 @@ proj/go/**
 !proj/go/src/github.com/pineman
 !proj/go/src/github.com/pineman/**
 
-ctf
 learn/qt/qml
 
 proj/at
