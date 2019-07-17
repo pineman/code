@@ -4,7 +4,7 @@ ASFLAGS=
 LD=ld
 
 all:
-	make sys_write
+	$(MAKE) sys_write
 
 clean:
 	rm -f *.o

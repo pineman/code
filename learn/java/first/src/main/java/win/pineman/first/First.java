@@ -18,7 +18,7 @@ public class First {
      * Main Method
      * @param args Program command line arguments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         System.out.println(publicStaticField);
         System.out.println();
         First anObject = new First(49);
@@ -28,7 +28,7 @@ public class First {
         anObject.printType(a);
         anObject.printType(b);
         anObject.printType(a - 1);
-    }
+    }*/
 
     void printType(short i) {
         System.out.println(i + " Is a short");
