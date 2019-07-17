@@ -1,4 +1,4 @@
-package win.pineman.first;
+/*package win.pineman.first;
 
 import org.junit.Test;
 
@@ -9,4 +9,4 @@ public class FirstTest {
     @Test
     public void main() {
     }
-}
+}*/
