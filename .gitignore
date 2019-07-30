@@ -18,3 +18,5 @@ proj/go/**
 learn/qt/qml
 
 proj/at
+
+.DS_Store
