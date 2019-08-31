@@ -5,4 +5,3 @@ xrandr --output HDMI1 --set "Broadcast RGB" "Full"
 #feh --no-fehbg --bg-fill "$HOME/.background.jpg"
 pactl set-card-profile 0 output:hdmi-stereo
 xset -dpms
-[[ "$XSESSION" == "i3" ]] && i3-msg restart
