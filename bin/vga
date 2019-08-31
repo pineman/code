@@ -7,4 +7,3 @@ else
 fi
 #feh --no-fehbg --bg-fill "$HOME/.background.jpg"
 xset -dpms
-[[ "$XSESSION" == "i3" ]] && i3-msg restart
