@@ -102,7 +102,7 @@ defmodule Types do
     # Is the value on the map nil or :not_found ????
     # solution: use Map.fetch, or Map.fetch! to raise an exception on key not found.
     IO.inspect Map.fetch(squares, 2)
-    IO.inspect Map.fetch(squares, 5)
+    IO.inspect Map.fetch(squares,  5)
 
     # Maps with atom keys have special syntax. keys go from :name to name:,
     # and you can access fields with mapname.field
@@ -111,5 +111,72 @@ defmodule Types do
 
     # Map update syntax. Only works on already existing fields
     bob = %{bob | age: "26", works_at: "Celfocus"}
+  end
+
+  def binaries do
+    IO.inspect <<40, 50>> <> <<256, 257, 10>>
+  end
+
+  def strings do
+    # Strings are binaries. So, you can also concat with <>.
+    IO.inspect "String with embedded expression #{3 + 0.14}"
+    IO.inspect "
+    Multiline
+    string"
+    IO.inspect """
+      Also, heredocs.
+    """
+
+    # These are called sigils:
+    IO.inspect ~s(literal string with quotes and stuff "')
+    IO.inspect ~S(Super literal string with no embedded exprs #{123} or escapes \n)
+  end
+
+  def charlist do
+    # Lists of integers. Prefer binary strings.
+    IO.inspect 'ABC'
+    IO.inspect String.to_string('ABC')
+  end
+
+  def lambdas do
+    square = fn x -> x * x end
+    IO.inspect square.(5) # dot .() needed to distinguish anonymous and named functions
+
+    Enum.each(
+      [1, 2, 3],
+      fn x -> IO.puts(x) end
+    )
+
+    Enum.each(
+      1..3, # Ranges
+      &IO.puts/1 # Capture operator, omit explicit argument naming
+    )
+
+    Enum.each(
+      1..3,
+      &(&1 * &1) # One arity lambda with capture operator
+    )
+
+    lambda = &(&1 * &2 + &3)
+    r = lambda.(2, 10, 3)
+    IO.puts(r)
+    closure = fn x ->
+      IO.puts(r + x) # Hold a reference to r. It won't be eligibled for garbage collection
+    end
+    closure.(5)
+    r = 100_000
+    closure.(5)
+  end
+
+  def keyword_lists do
+    [test: 1, name: "Hello"]
+    IO.inspect([100, 200, 300], [width: 1, limit: 2])
+    # Square brackets are optional if the last argument to a function call is a
+    # keyword list (common idiom to simulate multiple optional arguments)
+    IO.inspect([100, 200, 300], width: 1, limit: 2)
+  end
+
+  def iolist do
+    # TODO: page 54
   end
 end
