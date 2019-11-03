@@ -24,15 +24,7 @@ jar {
     manifest {
         attributes 'Main-Class': mainClassName
     }
-}
-
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Main-Class': mainClassName
-    }
-    baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
 }
 
 sourceCompatibility = 1.8
