@@ -8,6 +8,8 @@ defmodule Types do
     puts div 4, 2 # Integer division, comes from Kernel.* (the Kernel is autoimported)
     puts rem 5, 2 # Modulo operation
     puts 1_000_000
+    puts 1 == 1.0 # Weak equality
+    puts 1 === 1.0 # Strict equality, TODO: is this only relevant to numbers?
   end
 
   def atoms do
@@ -161,7 +163,7 @@ defmodule Types do
     r = lambda.(2, 10, 3)
     IO.puts(r)
     closure = fn x ->
-      IO.puts(r + x) # Hold a reference to r. It won't be eligibled for garbage collection
+      IO.puts(r + x) # Hold a reference to r. It won't be eligible for garbage collection
     end
     closure.(5)
     r = 100_000
@@ -169,7 +171,9 @@ defmodule Types do
   end
 
   def keyword_lists do
-    [test: 1, name: "Hello"]
+    # A keyword list is a special case of a list, where each element is a
+    # two-element tuple, and the first element of each tuple is an atom.
+    IO.inspect [monday: 1, tuesday: "hello", wednesday: 3] == [{:monday, 1}, {:tuesday, "hello"}, {:wednesday, 3}]
     IO.inspect([100, 200, 300], [width: 1, limit: 2])
     # Square brackets are optional if the last argument to a function call is a
     # keyword list (common idiom to simulate multiple optional arguments)
@@ -178,5 +182,14 @@ defmodule Types do
 
   def iolist do
     # TODO: page 54
+    # https://hexdocs.pm/elixir/IO.html#module-io-data
+  end
+
+  def stuff do
+    IO.inspect 1 + 2
+    IO.inspect Kernel.+(1, 2)
+    IO.inspect &+/2
+    IO.inspect &Kernel.+/2
+    :yay
   end
 end

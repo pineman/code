@@ -1,0 +1,9 @@
+[submodule "elixir/elixir-in-action"]
+	path = elixir/elixir-in-action
+	url = https://github.com/sasa1977/elixir-in-action
+[submodule "elixir/demo_system"]
+	path = elixir/demo_system
+	url = https://github.com/sasa1977/demo_system
+[submodule "elixir/elixir-workshop"]
+	path = elixir/elixir-workshop
+	url = https://github.com/dnlserrano/elixir-workshop
