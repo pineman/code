@@ -1,0 +1,13 @@
+(defun c-repl ()
+
+(loop (fresh-line)
+
+(princ "c99> ")
+
+(let* ((form (read-line))
+
+(func (eval `(let ((*compile-verbose* nil))
+
+(compile nil (lambda () (ffi:c-inline nil nil :void ,form)))))))
+
+(funcall func))))
