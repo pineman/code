@@ -1,0 +1,47 @@
+plugins {
+	id 'application'
+	id 'idea'
+	id 'com.github.ben-manes.versions' version '0.27.0'
+	id 'org.beryx.runtime' version '1.8.0'
+	id 'com.github.spotbugs' version '2.0.1'
+	id 'pmd'
+}
+
+dependencies {
+	//implementation 'com.google.guava:guava:28.0-jre'
+
+	testImplementation 'org.testng:testng:7.0.0'
+}
+
+version = '0.1.0-SNAPSHOT'
+application {
+	mainClassName = 'eu.pineman.learn.scratch.App'
+}
+
+pmd {
+	ruleSets = ['java-quickstart']
+}
+
+spotbugs {
+	toolVersion = '4.0.0-beta4'
+}
+
+runtime {
+	options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+	modules = ['java.base']
+}
+
+repositories {
+	jcenter()
+}
+
+test {
+	useTestNG()
+}
+
+if (project.hasProperty('debugRun') && project.debugRun as boolean) {
+	run {
+		jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=*:5005'
+	}
+}
+
