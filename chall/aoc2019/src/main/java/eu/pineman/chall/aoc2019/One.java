@@ -1,40 +1,38 @@
 package eu.pineman.chall.aoc2019;
 
-import java.util.stream.Stream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class One {
-    public static void main(String[] args) {
-        Stream<String> input = Utils.readFileLines("input/1/input.txt");
-        System.out.println(partOne(input));
-        System.out.println(partTwo(input));
-    }
+public abstract class One {
+    static List<Path> ONE_INPUT = Arrays.asList(
+        "input/1/input.txt"
+    ).stream().map(Paths::get).collect(Collectors.toList());
 
-    private static long calcFuel(Stream<String> modules) {
-//        lines.forEach(line -> {
-//            res += Long.parseLong(line) / 3 - 2;
-//        });
-        return modules.mapToLong(One::calcModuleFuel).sum();
-    }
-
-    private static long calcModuleFuel(long moduleMass) {
-        return moduleMass / 3 - 2;
-    }
-
-    private static long calcModuleFuel(String moduleMass) {
-        return calcModuleFuel(Long.parseLong(moduleMass));
-    }
-
-    private static long partOne(Stream<String> lines) {
-        return calcFuel(lines);
-    }
-
-    private static long partTwo(Stream<String> lines) {
-        long fuelModuleMass = calcFuel(lines);
-        long totalFuel = fuelModuleMass;
-        while (fuelModuleMass > 0) {
-            fuelModuleMass = calcModuleFuel(fuelModuleMass);
-            totalFuel += fuelModuleMass;
+    public static void main(String[] args) throws IOException {
+        for (Path path : ONE_INPUT) {
+            System.out.println(partOne(path));
+            System.out.println(partTwo(path));
         }
-        return totalFuel;
+    }
+
+    static long partOne(Path input) throws IOException {
+        return Files.lines(input).mapToLong(line -> Long.parseLong(line) / 3 - 2).sum();
+    }
+
+    static long partTwo(Path input) throws IOException {
+        return Files.lines(input).mapToLong(line -> {
+            long moduleMass = Long.parseLong(line) / 3 - 2;
+            long totalModuleMass = 0;
+            while (moduleMass > 0) {
+                totalModuleMass += moduleMass;
+                moduleMass = moduleMass / 3 - 2;
+            }
+            return totalModuleMass;
+        }).sum();
     }
 }
