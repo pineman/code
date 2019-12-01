@@ -15,7 +15,7 @@ dependencies {
 
 version = '0.1.0-SNAPSHOT'
 application {
-	mainClassName = 'eu.pineman.chall.aoc2019.OneOne'
+    mainClassName = project.hasProperty("mainClass") ? "eu.pineman.chall.aoc2019." + getProperty("mainClass") : "NULL"
 }
 
 pmd {
