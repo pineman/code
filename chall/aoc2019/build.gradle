@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:28.0-jre'
+
+    // Use TestNG framework, also requires calling test.useTestNG() below
+    testImplementation 'org.testng:testng:6.14.3'
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'eu.pineman.chall.aoc2019.App'
+}
+
+test {
+    // Use TestNG for unit tests
+    useTestNG()
+}
