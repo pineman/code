@@ -1,25 +1,53 @@
 plugins {
-    id 'java'
-    id 'application'
-}
-
-repositories {
-    jcenter()
+	id 'application'
+	id 'idea'
+	id 'com.github.ben-manes.versions' version '0.27.0'
+	id 'org.beryx.runtime' version '1.8.0'
+	id 'com.github.spotbugs' version '2.0.1'
+//	id 'pmd'
 }
 
 dependencies {
-    implementation 'com.google.guava:guava:28.0-jre'
+	//implementation 'com.google.guava:guava:28.0-jre'
 
-    // Use TestNG framework, also requires calling test.useTestNG() below
-    testImplementation 'org.testng:testng:6.14.3'
+	testImplementation 'org.testng:testng:7.0.0'
 }
 
+version = '0.1.0-SNAPSHOT'
 application {
-    // Define the main class for the application.
-    mainClassName = 'eu.pineman.chall.aoc2019.App'
+	mainClassName = 'eu.pineman.chall.aoc2019.OneOne'
+}
+
+//pmd {
+//	ruleSets = ['java-quickstart']
+//}
+
+spotbugs {
+	toolVersion = '4.0.0-beta4'
+}
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+  reports {
+    xml.enabled false
+    html.enabled true
+  }
+}
+
+runtime {
+	options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+	modules = ['java.base']
+}
+
+repositories {
+	jcenter()
 }
 
 test {
-    // Use TestNG for unit tests
-    useTestNG()
+	useTestNG()
 }
+
+if (project.hasProperty('debugRun') && project.debugRun as boolean) {
+	run {
+		jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=*:5005'
+	}
+}
+
