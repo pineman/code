@@ -41,3 +41,6 @@
 [submodule "learn"]
 	path = learn
 	url = git@github.com:pineman/learn
+[submodule "git/gitignore"]
+	path = git/gitignore
+	url = https://github.com/github/gitignore
