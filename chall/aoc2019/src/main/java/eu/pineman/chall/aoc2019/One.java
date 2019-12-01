@@ -22,13 +22,35 @@ public abstract class One {
     }
 
     static long partOne(Path input) throws IOException {
-        return AOCUtils.fileLinesStream(input).mapToLong(One::calcFuel).sum();
-//        return Files.lines(input).mapToLong(One::calcFuel).sum();
+//        return AOCUtils.fileLinesStream(input).mapToLong(One::calcFuel).sum();
+        return Files.lines(input).mapToLong(One::calcFuel).sum();
     }
 
     static long partTwo(Path input) throws IOException {
+//        return partTwoIterative(input);
+        return partTwoRecursive(input);
+    }
+
+    private static long partTwoIterative(Path input) throws IOException {
 //        return AOCUtils.fileLinesStream(input).mapToLong(One::calcFuelTotal).sum();
         return Files.lines(input).mapToLong(One::calcFuelTotal).sum();
+    }
+
+    private static long partTwoRecursive(Path input) {
+        try (Stream<String> lines = Files.lines(input)) {
+            return lines.mapToLong(line -> calcFuelTotalRecursive(Long.parseLong(line))).sum();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return 0;
+    }
+
+    private static long calcFuelTotalRecursive(long mass) {
+        long step = calcFuel(mass);
+        if (step <= 0) return 0;
+        return step + calcFuelTotalRecursive(step);
     }
 
     private static long calcFuel(long mass) {
