@@ -15,8 +15,6 @@ proj/go/**
 !proj/go/src/github.com/pineman
 !proj/go/src/github.com/pineman/**
 
-learn/qt/qml
-
 proj/at
 
 .DS_Store
