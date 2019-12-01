@@ -4,7 +4,7 @@ plugins {
 	id 'com.github.ben-manes.versions' version '0.27.0'
 	id 'org.beryx.runtime' version '1.8.0'
 	id 'com.github.spotbugs' version '2.0.1'
-//	id 'pmd'
+	id 'pmd'
 }
 
 dependencies {
@@ -18,9 +18,9 @@ application {
 	mainClassName = 'eu.pineman.chall.aoc2019.OneOne'
 }
 
-//pmd {
-//	ruleSets = ['java-quickstart']
-//}
+pmd {
+	ruleSets = ['java-quickstart']
+}
 
 spotbugs {
 	toolVersion = '4.0.0-beta4'
