@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 public abstract class One {
     static List<Path> ONE_INPUT = Stream.of(
             "input/1/input.txt"
+//            "input/1/bigboyinput.txt"
     ).map(Paths::get).collect(Collectors.toList());
 
     public static void main(String[] args) throws IOException {
@@ -21,8 +22,8 @@ public abstract class One {
     }
 
     static long partOne(Path input) throws IOException {
-//        return AOCUtils.fileLinesStream(input).mapToLong(One::calcFuel).sum();
-        return Files.lines(input).mapToLong(One::calcFuel).sum();
+        return AOCUtils.fileLinesStream(input).mapToLong(One::calcFuel).sum();
+//        return Files.lines(input).mapToLong(One::calcFuel).sum();
     }
 
     static long partTwo(Path input) throws IOException {

@@ -1,3 +1,5 @@
+input/**/**.xz
+
 # Compiled class file
 *.class
 
