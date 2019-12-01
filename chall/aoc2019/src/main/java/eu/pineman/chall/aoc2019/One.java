@@ -21,10 +21,12 @@ public abstract class One {
     }
 
     static long partOne(Path input) throws IOException {
+//        return AOCUtils.fileLinesStream(input).mapToLong(One::calcFuel).sum();
         return Files.lines(input).mapToLong(One::calcFuel).sum();
     }
 
     static long partTwo(Path input) throws IOException {
+//        return AOCUtils.fileLinesStream(input).mapToLong(One::calcFuelTotal).sum();
         return Files.lines(input).mapToLong(One::calcFuelTotal).sum();
     }
 

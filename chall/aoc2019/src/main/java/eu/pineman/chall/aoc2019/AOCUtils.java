@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class InputUtils {
-    private InputUtils() {
+public final class AOCUtils {
+    private AOCUtils() {
         throw new UnsupportedOperationException();
     }
 
