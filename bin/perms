@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# usage: perms <dirs> ...
+
+# 1) owner: http (served files) [default], root (config files)
+# 2) group: devops (admin group)
+# 3) perms: 2770 for dirs, 0660 for files
+# 4) set default acl permissions for future files
+
+OWNER="almiro"
+ADM_GROUP="almiro"
+
+[[ $IKWID != 1 ]] && echo "do you know what you're doing?" 1>&2 && exit 255
+
+[[ $EUID != 0 ]] && echo "run as root" 1>&2 && exit 1
+
+for dir in "$@"; do
+	if [[ -d "$dir" ]]; then
+		chown -R $OWNER:$ADM_GROUP "$dir"
+		#find "$dir" -type d -exec chmod 2770 {} \;
+		#find "$dir" -type d -exec chmod g+s {} \;
+		#find "$dir" -type f -exec chmod 0660 {} \;
+		# X for dirs but not for files
+		#setfacl -dR --set u::rwX,g::rwX,o::- "$dir"
+
+		find "$dir" -type d -exec chmod 0755 {} \;
+		find "$dir" -type f -exec chmod 0644 {} \;
+		find "$dir" -type d -exec chmod g-s {} \;
+		setfacl -bnR "$dir" # remove
+	else
+		echo "Error: path not found: $dir" 1>&2 && exit 2
+	fi
+done
