@@ -3,12 +3,12 @@ plugins {
 	id 'idea'
 	id 'com.github.ben-manes.versions' version '0.27.0'
 	id 'org.beryx.runtime' version '1.8.0'
-	id 'com.github.spotbugs' version '2.0.1'
+	id 'com.github.spotbugs' version '3.0.0'
 	id 'pmd'
 }
 
 dependencies {
-	//implementation 'com.google.guava:guava:28.0-jre'
+	implementation 'com.google.guava:guava:28.1-jre'
 
 	testImplementation 'org.testng:testng:7.0.0'
 }
