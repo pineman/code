@@ -14,10 +14,10 @@ public final class AOCUtils {
 
     static Stream<String> fileLinesStream(Path path) {
         try (Stream<String> stringStream = Files.lines(path)) {
-            return stringStream;
+            return stringStream; // TODO: try-with-resources will close the stream before returning!! hence the error
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(1);
+            System.exit(1); // TODO: not worth catching exceptions if you're not doing anything with them!
         }
         return null;
     }
