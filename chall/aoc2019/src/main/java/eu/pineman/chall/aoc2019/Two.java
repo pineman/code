@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Two {
-    static List<Path> TWO_INPUT = Stream.of(
+public abstract class Two {
+    final static List<Path> TWO_INPUT = Stream.of(
             "input/2/input.txt"
 //            "input/2/bigboyinput.txt"
     ).map(Paths::get).collect(Collectors.toList());
@@ -49,6 +49,8 @@ public class Two {
                     break;
                 case 99:
                     break loop;
+                default:
+                    break;
             }
         }
     }
