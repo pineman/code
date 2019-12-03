@@ -1,0 +1,1 @@
+ * Configure checkstyle in intellij
