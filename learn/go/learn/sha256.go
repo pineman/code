@@ -22,6 +22,7 @@ func concurrent() {
 			//var n = rand.Int() % 10000000
 			//var n = math.Pow(number, 2)
 			var n = number * number
+			// TODO: don't print - save this info and print once at the end
 			fmt.Printf("this is goroutine #%02v doing %v iterations!\n", number, n)
 
 			for j := 0; j < n; j++ {

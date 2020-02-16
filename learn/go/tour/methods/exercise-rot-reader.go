@@ -18,7 +18,7 @@ func Rot13(v int, b int) int {
 func (r rot13Reader) Read(b []byte) (int, error) {
 	buf := make([]byte, 1)
 	i := 0
-	for ; ; i++ {
+	for i = range b {
 		_, err := r.r.Read(buf)
 		if err == io.EOF {
 			break
@@ -32,9 +32,6 @@ func (r rot13Reader) Read(b []byte) (int, error) {
 			b[i] = buf[0]
 		}
 	}
-	// TODO: how to know we're out of the loop because `b` was not big enough or we got io.EOF ?
-	// Can you even get to a limit of `b`? this is very dynamic right
-	// Review len vs cap and array vs slice (what happens if you overfill a slice? an array?)
 	return i, io.EOF
 }
 

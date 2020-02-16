@@ -11,6 +11,7 @@ func main() {
 	var i_nil I
 	describe(i_empty)
 	describe(i_nil)
+	// i_empty.M()
 	i_nil.M()
 }
 
