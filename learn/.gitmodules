@@ -7,3 +7,6 @@
 [submodule "elixir/elixir-workshop"]
 	path = elixir/elixir-workshop
 	url = https://github.com/dnlserrano/elixir-workshop
+[submodule "elixir/aoc"]
+	path = elixir/aoc
+	url = https://github.com/sasa1977/aoc
