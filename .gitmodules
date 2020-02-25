@@ -41,9 +41,12 @@
 [submodule "learn"]
 	path = learn
 	url = git@github.com:pineman/learn
+	branch = master
 [submodule "git/gitignore"]
 	path = git/gitignore
 	url = https://github.com/github/gitignore
+	branch = master
 [submodule "proj/Templates"]
 	path = proj/Templates
 	url = git@github.com:pineman/templates
+	branch = master
