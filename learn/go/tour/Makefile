@@ -2,7 +2,7 @@ SRC=$(shell find . -type f -name "*.go")
 all: $(SRC:%.go=%)
 
 %: %.go
-	go build -o $(GOPATH)/bin/$@ $@.go
+	go build -o $(GOPATH)/bin/$(notdir $@) $@.go
 
 clean:
-	rm -rf $(addprefix $(GOPATH)/bin/, $(SRC:./%.go=%))
+	rm -rf $(addprefix $(GOPATH)/bin/, $(notdir $(SRC:./%.go=%)))
