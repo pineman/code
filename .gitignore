@@ -9,11 +9,7 @@ a.out
 *.o
 .dummy
 
-proj/go/**
-!proj/go/src
-!proj/go/src/github.com
-!proj/go/src/github.com/pineman
-!proj/go/src/github.com/pineman/**
+go
 
 proj/at
 
