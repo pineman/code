@@ -1,5 +1,7 @@
 package main
 
 func main() {
-	chain()
+	// chain()
+	// preempt()
+	pingpong()
 }
