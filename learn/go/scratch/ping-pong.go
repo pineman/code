@@ -6,8 +6,6 @@ import (
 	"golang.org/x/text/message"
 )
 
-const TIME = 10
-
 type Ball struct {
 	hits [2]int
 }
@@ -20,14 +18,10 @@ func pingpong() {
 	go player(table, 1)
 
 	table <- new(Ball)
-	time.Sleep(TIME * time.Second)
+	time.Sleep(10 * time.Second)
 
 	ball := <-table
-	total := 0
-	for i, v := range ball.hits {
-		p.Printf("goroutine %d has %d hits\n", i, v)
-		total += v
-	}
+	total := ball.hits[0] + ball.hits[1]
 	p.Println(total, "total pings")
 	p.Println(total/TIME, "pings per second")
 }
@@ -35,6 +29,18 @@ func pingpong() {
 func player(table chan *Ball, id int) {
 	for {
 		ball := <-table
+		// TODO
+		// The two goroutines never increment at the same time, as they're
+		// synchronized by the `table` channel.
+		// But they could be running in two different CPUs at the same time,
+		// right? So an increment of goroutine 0 could cause a cache line
+		// eviction of the CPU where goroutine 1 is running (when it runs again
+		// and increments). So how is this not false sharing?
+		// I did an experiment with padding between the two `hit` variables
+		// and it didn't change anything.
+		// This assumes the two goroutines running on different CPUs is likely.
+		// Maybe it isn't, and that assumption is not true for whatever
+		// scheduling linux does.
 		ball.hits[id]++
 		table <- ball
 	}

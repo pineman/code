@@ -3,13 +3,13 @@ package main
 import "fmt"
 
 func preempt() {
-    done := false
+	done := false
 
-    go func() {
-        done = true
-    }()
+	go func() {
+		done = true
+	}()
 
-    for !done {
-    }
-    fmt.Println("done!")
+	for !done {
+	}
+	fmt.Println("done!")
 }
