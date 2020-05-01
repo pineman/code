@@ -1,8 +1,8 @@
 #!/bin/sh
 
-xrandr --output LVDS1 --off --output DP1 --off --output DP2 --off --output DP3 --off --output HDMI1 --off --output HDMI2 --mode 1440x900 --output HDMI3 --off --output VGA1 --off --output VIRTUAL1 --off
+xrandr --output LVDS1 --off --output DP1 --off --output DP2 --off --output DP3 --off --output HDMI1 --off --output HDMI2 --mode 1440x900 --primary --output HDMI3 --off --output VGA1 --off --output VIRTUAL1 --off
 #feh --no-fehbg --bg-fill "$HOME/.background.jpg"
-xset -dpms
+sudo tlp bat
 nmcli radio wifi off
 keyboard
 pactl set-sink-volume @DEFAULT_SINK@ 80%

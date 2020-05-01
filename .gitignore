@@ -1,8 +1,8 @@
-pkg
-ctf
-local
 git
 !git/.keep
+local
+pkg
+abs
 
 **__pycache__**
 a.out
@@ -11,6 +11,5 @@ a.out
 
 go
 
-proj/at
-
 .DS_Store
+._*

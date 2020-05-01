@@ -1,1 +1,7 @@
-k
+# Swap escape and caps lock
+setxkbmap -option caps:swapescape
+#setxkbmap -option altwin:swap_alt_win
+
+#xset r rate 120 70
+xset r rate 140 55
+xmodmap ~/.Xmodmap
