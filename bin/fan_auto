@@ -3,4 +3,3 @@ echo level auto | sudo tee /proc/acpi/ibm/fan
 #tlp bat
 #tpacpi-bat -s IC 1 0
 #xset +dpms
-#xset dpms 0 0 60
