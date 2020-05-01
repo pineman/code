@@ -1,6 +1,7 @@
 git
 !git/.keep
 local
+!local/.keep
 pkg
 abs
 
