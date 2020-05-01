@@ -6,27 +6,27 @@ import (
 	"golang.org/x/text/message"
 )
 
-type Ball struct {
+type ball struct {
 	hits [2]int
 }
 
 func pingpong() {
 	p := message.NewPrinter(message.MatchLanguage("en"))
 
-	table := make(chan *Ball)
+	table := make(chan *ball)
 	go player(table, 0)
 	go player(table, 1)
 
-	table <- new(Ball)
+	table <- new(ball)
 	time.Sleep(10 * time.Second)
 
 	ball := <-table
 	total := ball.hits[0] + ball.hits[1]
 	p.Println(total, "total pings")
-	p.Println(total/TIME, "pings per second")
+	p.Println(total/10, "pings per second")
 }
 
-func player(table chan *Ball, id int) {
+func player(table chan *ball, id int) {
 	for {
 		ball := <-table
 		// TODO

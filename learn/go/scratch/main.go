@@ -3,5 +3,6 @@ package main
 func main() {
 	// chain()
 	// preempt()
-	pingpong()
+	// pingpong()
+	after()
 }

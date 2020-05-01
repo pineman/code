@@ -7,35 +7,35 @@ import (
 	"golang.org/x/text/message"
 )
 
-type BallPad struct {
-	hits_a int
-	_pad   cpu.CacheLinePad
-	hits_b int
+type ballPad struct {
+	hitsA int
+	_pad  cpu.CacheLinePad
+	hitsB int
 }
 
 func pingpongpad() {
 	p := message.NewPrinter(message.MatchLanguage("en"))
 
-	table := make(chan *BallPad)
-	go player_pad(table, 0)
-	go player_pad(table, 1)
+	table := make(chan *ballPad)
+	go playerPad(table, 0)
+	go playerPad(table, 1)
 
-	table <- new(BallPad)
+	table <- new(ballPad)
 	time.Sleep(10 * time.Second)
 
 	ball := <-table
-	total := ball.hits_a + ball.hits_b
+	total := ball.hitsA + ball.hitsB
 	p.Println(total, "total pings")
-	p.Println(total/TIME, "pings per second")
+	p.Println(total/10, "pings per second")
 }
 
-func player_pad(table chan *BallPad, id int) {
+func playerPad(table chan *ballPad, id int) {
 	for {
 		ball := <-table
 		if id == 0 {
-			ball.hits_a++
+			ball.hitsA++
 		} else {
-			ball.hits_b++
+			ball.hitsB++
 		}
 		table <- ball
 	}
