@@ -18,6 +18,9 @@ version = '0.1.0-SNAPSHOT'
 application {
 	mainClassName = 'eu.pineman.learn.native_image.Test'
 }
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
 
 pmd {
 	ruleSets = ['java-quickstart']
@@ -39,7 +42,7 @@ spotbugsMain {
 
 jib {
 	if (project.build == "native") {
-		from.image = 'oracle/graalvm-ce:20.0.0-java11'
+		from.image = 'oracle/graalvm-ce:20.3.0-java11'
 		to.image = "base-native:${version}"
 	}
 	else {

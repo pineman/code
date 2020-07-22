@@ -5,7 +5,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 final class Test {
-	private Test () { }
+    private Test () { }
 
     public static void main(String[] args) throws IOException {
         System.out.println("Hello!");
@@ -13,4 +13,3 @@ final class Test {
         System.out.println("Goodbye!");
     }
 }
-

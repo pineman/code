@@ -1,4 +1,4 @@
-/*package win.pineman.first;
+package win.pineman.first;
 
 import io.javalin.Javalin;
 
@@ -14,4 +14,4 @@ public class HelloJavalin {
 //	public static void root(Context ctx) {
 //		ctx.result("Hello!");
 //	}
-//}*/
+//}
