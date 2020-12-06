@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xrandr --output HDMI1 --mode 1920x1080 --rotate normal --primary --output eDP1 --off
+xrandr --output HDMI1 --set "Broadcast RGB" "Full"

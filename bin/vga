@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [[ "$1" == "" ]]; then
-	xrandr --output VGA1 --primary --mode 1440x900 --pos 0x0 --output LVDS1 --off --output HDMI1 --off
-else
-	xrandr --output VGA1 --primary --mode 1280x1024 --pos 0x0 --output LVDS1 --off --output HDMI1 --off
-fi
-#feh --no-fehbg --bg-fill "$HOME/.background.jpg"
-xset -dpms

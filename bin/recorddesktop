@@ -3,26 +3,19 @@
 # Output file basename (extension is added after)
 output_basename="$HOME/x11grab-$(date +%s)"
 
-# Offset (upper-left corner)
-# format:
-# +<x_offset>,<y_offset>
+# Offset (from upper-left corner)
+# Format: +<x_offset>,<y_offset>
 offset=""
 # The resolution of the screen area
-# format:
-# <width>x<height>
+# Format: <width>x<height>
 area="$(xdpyinfo | grep 'dimensions:' |awk '{print $2}')"
 #area="1920x1080"
-video_codec="h264 -preset ultrafast -framerate 60"
+video_codec="libx264 -preset ultrafast -crf 0"
 ext="mp4"
+#audio_codec="libvorbis -b:a 128k -ac 2"
 
-# Pulse audio source. List them with: $(pactl list sources)
-# this is my pulse output. It could also be the mic input.
-pulse_device="alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
-#pulse_device="alsa_input.usb-Nam_Tai_E_E_Products_Ltd._USBMIC_Serial__032678132-00.analog-stereo"
-audio_codec="libvorbis -b:a 128k -ac 2"
-
-
-ffmpeg -f x11grab -s $area -i :0.0$offset -threads 1 \
-	-f pulse -i $pulse_device -acodec $audio_codec \
-	-vcodec $video_codec \
-	$output_basename.$ext
+ffmpeg -hwaccel vaapi -f x11grab -framerate 30 -s $area \
+	-thread_queue_size 1024 -i :0.0$offset -threads 1 \
+	-c:v $video_codec \
+	$output_basename.$ext 
+	#-f pulse -i default -c:a $audio_codec \
