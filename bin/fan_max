@@ -1,5 +1,0 @@
-#!/bin/sh
-echo level full-speed | sudo tee /proc/acpi/ibm/fan
-#tlp ac
-#tpacpi-bat -s IC 1 1
-#xset -dpms
