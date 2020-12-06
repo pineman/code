@@ -10,7 +10,7 @@ a.out
 *.o
 .dummy
 
-go
+/go
 
 .DS_Store
 ._*
