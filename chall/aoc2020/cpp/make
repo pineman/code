@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+export BUILD_TYPE=Default
+
+build() {
+	rm -rf build; mkdir build; cd build
+	cmake -G Ninja -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
+	ninja
+}
+
+release() {
+	BUILD_TYPE=Release build
+}
+
+eval ${1:-build}
