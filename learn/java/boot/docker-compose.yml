@@ -1,0 +1,8 @@
+services:
+  web:
+    build:
+      context: .
+    image: web:latest
+    container_name: web
+    ports:
+      - "8080:8080"

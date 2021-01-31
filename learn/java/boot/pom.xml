@@ -13,29 +13,45 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>boot</name>
 	<description>Demo project for Spring Boot</description>
-	<properties>
-		<java.version>11</java.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<version>${lib.springboot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+			<version>${lib.springboot.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<version>${lib.springboot.version}</version>
 		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>boot</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${lib.springboot.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${plugin.versions-maven.version}</version>
 			</plugin>
 		</plugins>
 	</build>
+	<properties>
+		<java.version>11</java.version>
+		<lib.springboot.version>2.4.2</lib.springboot.version>
+		<plugin.versions-maven.version>2.8.1</plugin.versions-maven.version>
+	</properties>
 
 </project>
