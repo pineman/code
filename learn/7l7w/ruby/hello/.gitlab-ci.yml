@@ -1,0 +1,8 @@
+image: ruby:3.0.0
+
+before_script:
+  - bundle install
+
+spec:
+  script:
+    - bundle exec rake
