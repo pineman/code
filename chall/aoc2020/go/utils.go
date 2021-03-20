@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var base string = "/home/pineman/code/chall/aoc2020/input/"
+var base string = "../../input/"
 
 func getInput(file string) []string {
 	input, err := ioutil.ReadFile(file)
@@ -18,8 +18,6 @@ func getInput(file string) []string {
 		s = s[:len(s)-1]
 	}
 	return s
-	// dynamic copy without len, probably slower than apriori make with len and copy()
-	// return append([]string{}, s...)
 }
 
 // GetInput returns the string of a day's input file
