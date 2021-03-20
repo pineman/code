@@ -9,6 +9,7 @@ public class Utils {
     public static Stream<String> getInput(int day) throws IOException {
         return Files.lines(Path.of("../input/" + day + "/input"));
     }
+
     public static Stream<String> getBigBoy(int day) throws IOException {
         return Files.lines(Path.of("../input/" + day + "/bigboy"));
     }

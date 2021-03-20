@@ -1,29 +1,30 @@
 plugins {
-	id 'application'
-	id 'idea'
-	id 'com.github.ben-manes.versions' version '0.36.0'
-	//id 'pmd'
-	//id 'com.github.spotbugs' version '4.6.0'
-	//id 'com.diffplug.spotless' version '5.8.2'
-	//id 'org.beryx.runtime' version '1.11.4'
+    id 'application'
+    id 'idea'
+    id 'com.github.ben-manes.versions' version '0.36.0'
+    //id 'pmd'
+    //id 'com.github.spotbugs' version '4.6.0'
+    //id 'com.diffplug.spotless' version '5.8.2'
+    //id 'org.beryx.runtime' version '1.11.4'
 }
 
 dependencies {
-	testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-	implementation 'org.javatuples:javatuples:1.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    implementation 'org.javatuples:javatuples:1.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
 }
 
 repositories {
-	jcenter()
+    jcenter()
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 version = '0.1.0-SNAPSHOT'
 application {
-	mainClass.set('eu.pineman.chall.aoc2020.One')
+    mainClass.set('eu.pineman.chall.aoc2020.One')
 }
 
 //pmd {
@@ -49,13 +50,13 @@ application {
 //}
 
 tasks.withType(JavaCompile) {
-	options.compilerArgs << "-Xlint:all" << "-Werror"
+    options.compilerArgs << "-Xlint:all" << "-Werror"
 }
 
 if (project.hasProperty('debugRun') && project.debugRun as boolean) {
-	run {
-		jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=*:5005'
-	}
+    run {
+        jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=*:5005'
+    }
 }
 
 jar {

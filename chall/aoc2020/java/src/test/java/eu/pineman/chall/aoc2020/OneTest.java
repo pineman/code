@@ -26,28 +26,27 @@ class OneTest {
         assertEquals(1939883877222459L, One.partOne(One.getBigBoy(), 99920044L));
     }
 
+    // Not working due to not using BigInts
 //    @Test
 //    void partTwoBigBoy() throws IOException {
 //        assertEquals(32625808479480099854130L, One.partTwo(One.getBigBoy(), 99920044L));
 //    }
 
-    // @formatter:off
     public static Object[][] twoSum() {
-        return new Object[][] {
-            {Pair.with(50L, 50L), new long[] {50L, 50L}, 100L},
-            {Pair.with(50L, 50L), new long[] {50L, 50L, 1L}, 100L},
-            {Pair.with(-1L, -1L), new long[] {50L, 50L, 1L}, 110L},
+        return new Object[][]{
+                {Pair.with(50L, 50L), new long[]{50L, 50L}, 100L},
+                {Pair.with(50L, 50L), new long[]{50L, 50L, 1L}, 100L},
+                {Pair.with(-1L, -1L), new long[]{50L, 50L, 1L}, 110L},
         };
     }
 
     public static Object[][] threeSum() {
-        return new Object[][] {
-            {Triplet.with(30L, 30L, 30L), new long[] {30L, 30L, 30L}, 90L},
-            {Triplet.with(30L, 30L, 30L), new long[] {30L, 30L, 1L, 30L}, 90L},
-            {Triplet.with(-1L, -1L, -1L), new long[] {30L, 30L, 1L, 30L}, 100L},
-            };
+        return new Object[][]{
+                {Triplet.with(30L, 30L, 30L), new long[]{30L, 30L, 30L}, 90L},
+                {Triplet.with(30L, 30L, 30L), new long[]{30L, 30L, 1L, 30L}, 90L},
+                {Triplet.with(0L, -1L, -1L), new long[]{30L, 30L, 1L, 30L}, 100L},
+        };
     }
-    // @formatter:on
 
     @ParameterizedTest
     @MethodSource("twoSum")
