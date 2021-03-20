@@ -16,7 +16,6 @@ Vagrant.configure('2') do |config|
       vb.memory = 1024
       vb.cpus = 1
     end
-    ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_ecdsa.pub").first.strip
     arch.vm.provision 'shell', privileged: true, inline: <<-SHELL
       echo 'Server = https://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
       pacman -Syyu --noconfirm --ignore linux &>/dev/null
@@ -25,6 +24,7 @@ Vagrant.configure('2') do |config|
       echo 'vagrant:165536:65536' > /etc/subgid
       sed -i 's/driver = ""/driver = "overlay"/g' /etc/containers/storage.conf
     SHELL
+    ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_ecdsa.pub").first.strip
     arch.vm.provision 'shell', privileged: false, inline: <<-SHELL
       echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
       systemctl enable --user podman.socket --now &>/dev/null
