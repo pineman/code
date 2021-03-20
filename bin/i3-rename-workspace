@@ -1,7 +1,4 @@
 #!/bin/bash
-# https://gist.github.com/andergrim/0a778b397b8db0e4b208
-WS=$(i3-msg -t 'get_workspaces' | sed -e 's/{"num/\n{"num/g' | grep \"focused\":true | sed -e 's/,"/\n/g' | grep name | cut -d\" -f 3)
-WS_TEXT=$(echo $WS | cut -d \: -f 2)
-WS_NR=$(echo $WS | cut -d \: -f 1)
-NEW=$(zenity --text="Enter new name:" --entry --title="Rename workspace $WS" --entry-text="$WS_TEXT")
-i3-msg "rename workspace \"$WS\" to \"$WS_NR:$NEW\""
+WS=$(i3-msg -t 'get_workspaces' | jq -r '.[] | select(.focused==true) .num')
+NEW=$(zenity --text="Move WS $WS to" --entry --title="Move workspace $WS")
+i3-msg "rename workspace \"$WS\" to \"$NEW\""
