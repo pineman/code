@@ -14,3 +14,6 @@
 	path = ruby/hello
 	url = git@gitlab.com:pinemang/hello
 	branch = main
+[submodule "go/learn-go-with-tests"]
+	path = go/learn-go-with-tests
+	url = https://github.com/quii/learn-go-with-tests
