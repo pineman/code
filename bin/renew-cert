@@ -1,2 +1,0 @@
-#!/bin/sh
-sudo certbot certonly --manual -d *.pineman.eu,pineman.eu
