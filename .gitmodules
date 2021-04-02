@@ -33,7 +33,7 @@
 [submodule "proj/homepage"]
 	path = proj/homepage
 	url = ssh://git@github.com/pineman/homepage.git
-	branch = master
+	branch = main
 [submodule "proj/desu"]
 	path = proj/desu
 	url = ssh://git@github.com/pineman/desu.git
