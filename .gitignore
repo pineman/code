@@ -1,9 +1,5 @@
 git
 !git/.keep
-local
-!local/.keep
-pkg
-abs
 
 **__pycache__**
 a.out
