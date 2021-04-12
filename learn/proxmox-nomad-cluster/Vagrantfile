@@ -1,0 +1,43 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$script = <<SCRIPT
+cat > /tmp/eth0.network <<EOF
+[Match]
+Name=eth0
+[Network]
+Address=192.168.1.10/24
+Gateway=192.168.1.254
+DNS=1.1.1.1
+EOF
+sudo mv /tmp/eth0.network /etc/systemd/network/
+echo 'Server = http://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch' | sudo tee /etc/pacman.d/mirrorlist
+
+#sudo pacman -S podman --noconfirm
+#echo 'vagrant:165536:65536' | sudo tee /etc/subuid
+#echo 'vagrant:165536:65536' | sudo tee /etc/subgid
+#sudo sed -i 's/driver = ""/driver = "overlay"/g' /etc/containers/storage.conf
+#systemctl enable --user podman.socket --now &>/dev/null
+#sudo mkdir -p /var/lib/nomad/plugins/
+#sudo chown -R vagrant: /var/lib/nomad
+#mv /vagrant/nomad-driver-podman /var/lib/nomad/plugins/
+
+sudo pacman -S docker pigz --noconfirm
+sudo gpasswd -a vagrant docker
+sudo systemctl enable docker.service
+
+sudo mv /vagrant/nomad /usr/bin/nomad
+sudo mv /vagrant/nomad.service /etc/systemd/system/
+sudo systemctl enable nomad.service
+SCRIPT
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "archlinux/archlinux"
+  config.vm.box_version = "= 20210401.18564"
+  config.vm.hostname = "n1"
+  config.vm.provision "shell", inline: $script, privileged: false
+  config.vm.provider :libvirt do |domain|
+    domain.cpus = 1
+    domain.memory = 512
+  end
+end

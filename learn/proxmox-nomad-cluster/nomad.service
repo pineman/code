@@ -1,0 +1,11 @@
+[Unit]
+Description=nomad agent
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/nomad agent -config /vagrant/
+
+[Install]
+WantedBy=multi-user.target

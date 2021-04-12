@@ -1,0 +1,1 @@
+cenas com o proxmox. simulei tres nós fisicos (instalados manualmente) como parte dum cluster proxmox. cada um com uma VM a correr o nomad no arch (imagem gerada pelo vagrantfile e copiada à pata pq.. proxmox é weird)
