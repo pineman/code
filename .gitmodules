@@ -38,10 +38,6 @@
 	path = proj/desu
 	url = ssh://git@github.com/pineman/desu.git
 	branch = master
-[submodule "learn"]
-	path = learn
-	url = git@github.com:pineman/learn
-	branch = master
 [submodule "git/gitignore"]
 	path = git/gitignore
 	url = https://github.com/github/gitignore
