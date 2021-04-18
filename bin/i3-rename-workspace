@@ -1,4 +1,0 @@
-#!/bin/bash
-WS=$(i3-msg -t 'get_workspaces' | jq -r '.[] | select(.focused==true) .num')
-NEW=$(zenity --text="Move WS $WS to" --entry --title="Move workspace $WS")
-i3-msg "rename workspace \"$WS\" to \"$NEW\""

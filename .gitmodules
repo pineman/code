@@ -50,3 +50,6 @@
 	path = proj/Templates
 	url = git@github.com:pineman/templates
 	branch = master
+[submodule "proj/services"]
+	path = proj/services
+	url = git@github.com:pineman/services.git

@@ -1,5 +1,0 @@
-#!/bin/bash
-(wireshark-gtk -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt &>/dev/null &)
-echo "Press any key after wireshark starts capturing"
-read
-(SSLKEYLOGFILE=ssl_keylog firefox &>/dev/null &)

@@ -1,7 +1,0 @@
-#!/bin/sh
-# 1 is default, 0.3 is good for classic intellimouse 
-sens=${1:-1}
-for id in $(xinput | cut -d '=' -f 2 | cut -f 1); do
-	xinput --set-prop $id 181 1 0 0 0 1 0 0 0 $sens &>/dev/null
-done
-xinput --set-prop 'Microsoft Microsoft 3-Button Mouse with IntelliEye(TM)' 181 1 0 0 0 1 0 0 0 $sens

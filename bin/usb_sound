@@ -1,3 +1,0 @@
-#!/bin/bash
-set -euxo pipefail
-paplay -v --server=/run/user/1000/pulse/native /home/pineman/.local/share/usb_"$1".wav
