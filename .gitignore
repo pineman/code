@@ -1,12 +1,4 @@
-git
-!git/.keep
-
-**__pycache__**
-a.out
-*.o
-.dummy
-
-/go
-
 .DS_Store
 ._*
+git
+!git/.keep

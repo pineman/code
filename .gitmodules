@@ -49,22 +49,22 @@
 [submodule "proj/services"]
 	path = proj/services
 	url = git@github.com:pineman/services.git
-[submodule "learn/elixir/elixir-in-action"]
-	path = learn/elixir/elixir-in-action
+[submodule "elixir/elixir-in-action"]
+	path = elixir/elixir-in-action
 	url = https://github.com/sasa1977/elixir-in-action
-[submodule "learn/elixir/demo_system"]
-	path = learn/elixir/demo_system
+[submodule "elixir/demo_system"]
+	path = elixir/demo_system
 	url = https://github.com/sasa1977/demo_system
-[submodule "learn/elixir/elixir-workshop"]
-	path = learn/elixir/elixir-workshop
+[submodule "elixir/elixir-workshop"]
+	path = elixir/elixir-workshop
 	url = https://github.com/dnlserrano/elixir-workshop
-[submodule "learn/elixir/aoc"]
-	path = learn/elixir/aoc
+[submodule "elixir/aoc"]
+	path = elixir/aoc
 	url = https://github.com/sasa1977/aoc
-[submodule "learn/ruby/hello"]
-	path = learn/ruby/hello
+[submodule "ruby/hello"]
+	path = ruby/hello
 	url = git@gitlab.com:pinemang/hello
 	branch = main
-[submodule "learn/go/learn-go-with-tests"]
-	path = learn/go/learn-go-with-tests
+[submodule "go/learn-go-with-tests"]
+	path = go/learn-go-with-tests
 	url = https://github.com/quii/learn-go-with-tests
