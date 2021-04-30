@@ -63,7 +63,7 @@
 	url = https://github.com/sasa1977/aoc
 [submodule "ruby/hello"]
 	path = ruby/hello
-	url = git@gitlab.com:pinemang/hello
+	url = git@github.com:pineman/hello
 	branch = main
 [submodule "go/learn-go-with-tests"]
 	path = go/learn-go-with-tests
