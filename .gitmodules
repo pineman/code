@@ -72,3 +72,6 @@
 [submodule "go/learn-go-with-tests"]
 	path = go/learn-go-with-tests
 	url = https://github.com/quii/learn-go-with-tests
+[submodule "proj/boot2k8s/k3os"]
+	path = proj/boot2k8s/k3os
+	url = https://github.com/rancher/k3os

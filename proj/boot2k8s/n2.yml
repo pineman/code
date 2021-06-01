@@ -1,0 +1,16 @@
+ssh_authorized_keys:
+- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOUAtqcdE18X2b3DNx2GrsT0H8yxT8TBcw/j4spCjyuq pineman
+hostname: n2
+write_files:
+- content: |
+    [service_lv]
+    Type = ethernet
+    IPv4 = 192.168.122.12/24/192.168.122.1
+    Nameservers = 1.1.1.1, 8.8.8.8
+  path: /var/lib/connman/lv.config
+k3os:
+  password: rancher
+  token: "ASDFFSDBBASDFIHHPOOOOIQWERN"
+  server_url: https://192.168.122.10:6443
+  k3s_args:
+  - agent

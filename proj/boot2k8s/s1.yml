@@ -1,0 +1,24 @@
+ssh_authorized_keys:
+- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOUAtqcdE18X2b3DNx2GrsT0H8yxT8TBcw/j4spCjyuq pineman
+hostname: s1
+write_files:
+- content: |
+    [service_lv]
+    Type = ethernet
+    IPv4 = 192.168.122.10/24/192.168.122.1
+    Nameservers = 1.1.1.1, 8.8.8.8
+  path: /var/lib/connman/lv.config
+k3os:
+  password: rancher
+  token: "ASDFFSDBBASDFIHHPOOOOIQWERN"
+  k3s_args:
+  - server
+  - --disable-cloud-controller
+  - --disable-network-policy
+  - --disable=coredns
+  - --disable=servicelb
+  - --disable=traefik
+  - --disable=local-storage
+  - --disable=metrics-server
+  - --node-taint
+  - "CriticalAddonsOnly=true:NoExecute"

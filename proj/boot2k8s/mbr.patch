@@ -1,0 +1,32 @@
+diff --git a/install.sh b/install.sh
+index 1c358e0..b3757aa 100755
+--- a/install.sh
++++ b/install.sh
+@@ -214,9 +214,7 @@ EOF
+         return 0
+     fi
+ 
+-    if [ "$K3OS_INSTALL_FORCE_EFI" = "true" ]; then
+-        GRUB_TARGET="--target=x86_64-efi"
+-    fi
++        GRUB_TARGET="--target=i386-pc"
+ 
+     grub-install ${GRUB_TARGET} --boot-directory=${TARGET}/boot --removable ${DEVICE}
+ }
+@@ -250,16 +248,8 @@ get_iso()
+ 
+ setup_style()
+ {
+-    if [ "$K3OS_INSTALL_FORCE_EFI" = "true" ] || [ -e /sys/firmware/efi ]; then
+-        PARTTABLE=gpt
+-        BOOTFLAG=esp
+-        if [ ! -e /sys/firmware/efi ]; then
+-            echo WARNING: installing EFI on to a system that does not support EFI
+-        fi
+-    else
+         PARTTABLE=msdos
+         BOOTFLAG=boot
+-    fi
+ }
+ 
+ validate_progs()
