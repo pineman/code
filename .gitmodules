@@ -49,6 +49,7 @@
 [submodule "proj/services"]
 	path = proj/services
 	url = git@github.com:pineman/services.git
+	branch = main
 [submodule "proj/images"]
 	path = proj/images
 	url = git@gitlab.com:pineman/images
@@ -75,3 +76,4 @@
 [submodule "proj/boot2k8s/k3os"]
 	path = proj/boot2k8s/k3os
 	url = https://github.com/rancher/k3os
+	branch = v0.20.x
