@@ -50,10 +50,6 @@
 	path = proj/services
 	url = git@github.com:pineman/services.git
 	branch = main
-[submodule "proj/images"]
-	path = proj/images
-	url = git@gitlab.com:pineman/images
-	branch = master
 [submodule "elixir/elixir-in-action"]
 	path = elixir/elixir-in-action
 	url = https://github.com/sasa1977/elixir-in-action
