@@ -1,5 +1,5 @@
 # script to setup an immutable k8s cluster on libvirt IaC
-* use talos or k3os.
+* k3os or k0s + some kernel?
 * boot at least 2 nodes, one server (control plane) and one agent (worker node).
 * config all that automatically
 * output kubectl config
