@@ -73,3 +73,7 @@
 	path = proj/boot2k8s/k3os
 	url = https://github.com/rancher/k3os
 	branch = v0.20.x
+[submodule "proj/ju"]
+	path = proj/ju
+	url = git@gitlab.com:pineman/ju.git
+	branch = main
