@@ -42,10 +42,6 @@
 	path = git/gitignore
 	url = https://github.com/github/gitignore
 	branch = main
-[submodule "proj/Templates"]
-	path = proj/Templates
-	url = git@github.com:pineman/templates
-	branch = master
 [submodule "proj/services"]
 	path = proj/services
 	url = git@github.com:pineman/services.git
