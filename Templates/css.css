@@ -1,0 +1,11 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+
+/* Print stylesheet */
+@media print {
+	a[href]::after {
+		content: " (" attr(href) ")"
+	}
+}
