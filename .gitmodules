@@ -30,10 +30,6 @@
 	path = proj/homepage
 	url = ssh://git@github.com/pineman/homepage.git
 	branch = main
-[submodule "proj/desu"]
-	path = proj/desu
-	url = ssh://git@github.com/pineman/desu.git
-	branch = master
 [submodule "git/gitignore"]
 	path = git/gitignore
 	url = https://github.com/github/gitignore
@@ -61,10 +57,6 @@
 [submodule "go/learn-go-with-tests"]
 	path = go/learn-go-with-tests
 	url = https://github.com/quii/learn-go-with-tests
-[submodule "proj/boot2k8s/k3os"]
-	path = proj/boot2k8s/k3os
-	url = https://github.com/rancher/k3os
-	branch = v0.20.x
 [submodule "proj/ju"]
 	path = proj/ju
 	url = git@gitlab.com:pineman/ju.git
