@@ -26,10 +26,6 @@
 	path = proj/psis
 	url = git@github.com:pineman/psis
 	branch = master
-[submodule "old_proj/pyreplify"]
-	path = old_proj/pyreplify
-	url = git@github.com:pineman/pyreplify
-	branch = master
 [submodule "proj/homepage"]
 	path = proj/homepage
 	url = ssh://git@github.com/pineman/homepage.git
