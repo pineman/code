@@ -11,3 +11,6 @@ However I realized half way that this was much harder to do than I expexted,
 requiring python parsing and semantic analysis, since python is ambiguous
 because of semantic whitespace; there was also some trouble with stuff like doc
 strings.
+
+## New obvious idea
+Instead of controlling the `python` repl process via a pty, just use libpython directly to interpret code dynamically!
