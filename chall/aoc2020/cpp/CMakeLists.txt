@@ -13,8 +13,8 @@ add_executable(aoc2020 ${MAIN} cenas.cpp cenas.h)
 
 ExternalProject_Add(
         doctest
-        GIT_REPOSITORY https://github.com/onqtam/doctest.git
-        GIT_TAG 2.4.4
+        GIT_REPOSITORY https://github.com/doctest/doctest.git
+        GIT_TAG v2.4.9
         CONFIGURE_COMMAND ""
         BUILD_COMMAND ""
         INSTALL_COMMAND ""
