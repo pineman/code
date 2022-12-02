@@ -21,6 +21,7 @@ def sh(cmd, *args):
 
 
 if __name__ == "__main__":
+    sh("python -m unittest")
     sh("git submodule update --init --recursive")
     c = ConfigParser()
     c.read(".gitmodules")
