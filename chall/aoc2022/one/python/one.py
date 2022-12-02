@@ -1,4 +1,4 @@
-with open('input') as f:
+with open('../input/1/input') as f:
     t = 0
     s = []
     for l in f:
