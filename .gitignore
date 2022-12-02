@@ -2,3 +2,4 @@
 ._*
 git
 !git/.keep
+__pycache__
