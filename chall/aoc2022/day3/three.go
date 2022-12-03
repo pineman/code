@@ -6,31 +6,35 @@ import (
 	aoc2022 "github.com/pineman/code/chall/aoc2022/go"
 )
 
-func partOne(input []string) int {
-	t := 0
-	for _, v := range input {
-		firstMap, secondMap := buildCompartmentMaps(v)
-		common := firstIntersection(firstMap, secondMap)
-		priority := asciiToPriority(common)
-		t += priority
+func itemMap(items string) map[rune]int {
+	itemMap := map[rune]int{}
+	for _, v := range items {
+		itemMap[v] += 1
 	}
-	return t
+	return itemMap
 }
 
-func buildCompartmentMaps(v string) (map[string]int, map[string]int) {
-	firstMap, secondMap := map[string]int{}, map[string]int{}
-	d := len(v)
-	for c := 0; c < d/2; c++ {
-		firstMap[string(v[c])] += 1
+// Excessively general for this context
+func intersectMap(a map[rune]int, b map[rune]int) map[rune]int {
+	common := map[rune]int{}
+	for k, v := range a {
+		if b[k] > 0 {
+			common[k] = v + b[k]
+		}
 	}
-	for c := d / 2; c < d; c++ {
-		secondMap[string(v[c])] += 1
-	}
-	return firstMap, secondMap
+	return common
 }
 
-func asciiToPriority(item string) int {
-	char := int(item[0])
+func getFirstKey(a map[rune]int) (key rune) {
+	for k := range a {
+		key = k
+		break
+	}
+	return
+}
+
+func asciiToPriority(item rune) int {
+	char := int(item)
 	if char <= 90 {
 		// Uppercase
 		return char - 65 + 27
@@ -40,16 +44,28 @@ func asciiToPriority(item string) int {
 	}
 }
 
-func firstIntersection(firstMap map[string]int, secondMap map[string]int) (common string) {
-	for k := range firstMap {
-		if secondMap[k] > 0 {
-			common = k
-		}
+func partOne(input []string) int {
+	t := 0
+	for _, v := range input {
+		common := intersectMap(itemMap(v[:len(v)/2]), itemMap(v[len(v)/2:]))
+		priority := asciiToPriority(getFirstKey(common))
+		t += priority
 	}
-	return
+	return t
+}
+
+func partTwo(input []string) int {
+	t := 0
+	for i := 0; i < len(input); i += 3 {
+		common := intersectMap(intersectMap(itemMap(input[i]), itemMap(input[i+1])), itemMap(input[i+2]))
+		priority := asciiToPriority(getFirstKey(common))
+		t += priority
+	}
+	return t
 }
 
 func main() {
 	input := aoc2022.GetInput(3)
 	fmt.Println(partOne(input))
+	fmt.Println(partTwo(input))
 }
