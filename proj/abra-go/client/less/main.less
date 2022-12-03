@@ -1,0 +1,58 @@
+@import "reset";
+
+@import "colors";
+@import "intro";
+@import "game";
+@import "stats";
+
+body {
+	font-family: 'Liberation Sans', 'Lucida Grande', 'Tahoma', sans-serif;
+	font-size: 20px;
+	color: white;
+	background-color: @black;
+	word-wrap: break-word;
+}
+
+/* A class to be added by JS code to smoothly fade out a game screen */
+.transition-out {
+	position: absolute;
+	top: 0;
+
+	opacity: 0;
+	margin-left: 100%;
+	margin-right: -100%;
+}
+
+a, a:link, a:visited, a:hover, a:focus, a:active {
+	color: inherit;
+	text-decoration: none;
+}
+
+/**
+ * Make the "Start" and "Play Again" buttons look the same whether they are
+ * <div>s or <button>s
+ */
+button {
+	border: 0;
+	color: inherit;
+	font: inherit;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.button {
+	display: inline-block;
+	margin-top: 1rem;
+	padding: 15px 50px;
+	background-color: @green;
+	transition: background-color 0.3s;
+	border-radius: 3px;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-size: 1.20em;
+	&:hover {
+		background-color: @green + #151515;
+	}
+}

@@ -1,0 +1,44 @@
+#force-start {
+	display: none;
+	color: @blue;
+	text-decoration: underline;
+}
+
+#text {
+	font-family: 'Courier New', monospace;
+	font-size: 25px;
+	line-height: 1.4;
+	padding: 10px;
+	background: @dark-white;
+	color: black;
+}
+
+#lobby {
+	height: 100%;
+	padding: 10px;
+
+	h6 {
+		margin-top: 5px;
+	}
+
+	ul {
+		margin: 20px;
+
+		li {
+			margin-bottom: 10px;
+			border-bottom: 1px solid;
+		}
+	}
+}
+
+#text span {
+	border: 1px solid rgba(0,0,0,0);
+
+  &[written] {
+		color: grey;
+	}
+}
+
+.wrong {
+	background-color: @red !important;
+}
