@@ -8,7 +8,7 @@ import (
 	aoc2022 "github.com/pineman/code/chall/aoc2022/go"
 )
 
-func dayOne(input []string) []int {
+func elves(input []string) []int {
 	s := []int{}
 	t := 0
 	for _, v := range input {
@@ -24,24 +24,24 @@ func dayOne(input []string) []int {
 }
 
 func partOne(input []string) int {
-	result := dayOne(input)
-	t := 0
-	for _, v := range result {
-		if v > t {
-			t = v
+	elves := elves(input)
+	max := 0
+	for _, v := range elves {
+		if v > max {
+			max = v
 		}
 	}
-	return t
+	return max
 }
 
 func partTwo(input []string) int {
-	result := dayOne(input)
-	sort.Ints(result)
-	r := 0
-	for _, v := range result[len(result)-3:] {
-		r += v
+	elves := elves(input)
+	sort.Ints(elves)
+	topThree := 0
+	for _, v := range elves[len(elves)-3:] {
+		topThree += v
 	}
-	return r
+	return topThree
 }
 
 func main() {
