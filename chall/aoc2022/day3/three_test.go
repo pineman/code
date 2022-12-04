@@ -72,3 +72,19 @@ func Test_partTwo(t *testing.T) {
 		})
 	}
 }
+
+func Benchmark_partTwoBigBoy(b *testing.B) {
+	input := aoc2022.GetBigBoyInput(3)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		partTwo(input)
+	}
+}
+
+func Benchmark_partTwoBigBoy_set(b *testing.B) {
+	input := aoc2022.GetBigBoyInput(3)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		partTwo_set(input)
+	}
+}

@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"strings"
+	"unicode"
 
 	aoc2022 "github.com/pineman/code/chall/aoc2022/go"
 )
@@ -33,23 +35,45 @@ func getFirstKey(a map[rune]int) (key rune) {
 	return
 }
 
-func asciiToPriority(item rune) int {
-	char := int(item)
-	if char <= 90 {
-		// Uppercase
-		return char - 65 + 27
+func partOne_set(input []string) int {
+	t := 0
+	for _, v := range input {
+		common := intersectMap(itemMap(v[:len(v)/2]), itemMap(v[len(v)/2:]))
+		priority := priority(getFirstKey(common))
+		t += priority
+	}
+	return t
+}
+
+func partTwo_set(input []string) int {
+	t := 0
+	for i := 0; i < len(input); i += 3 {
+		common := intersectMap(intersectMap(itemMap(input[i]), itemMap(input[i+1])), itemMap(input[i+2]))
+		priority := priority(getFirstKey(common))
+		t += priority
+	}
+	return t
+}
+
+func priority(item rune) int {
+	if unicode.IsUpper(item) {
+		return int(item) - 65 + 27
 	} else {
-		// Lowercase
-		return char - 97 + 1
+		return int(item) - 97 + 1
 	}
 }
 
 func partOne(input []string) int {
 	t := 0
 	for _, v := range input {
-		common := intersectMap(itemMap(v[:len(v)/2]), itemMap(v[len(v)/2:]))
-		priority := asciiToPriority(getFirstKey(common))
-		t += priority
+		first := v[:len(v)/2]
+		second := v[len(v)/2:]
+		for _, c := range first {
+			if strings.ContainsRune(second, c) {
+				t += priority(c)
+				break
+			}
+		}
 	}
 	return t
 }
@@ -57,15 +81,24 @@ func partOne(input []string) int {
 func partTwo(input []string) int {
 	t := 0
 	for i := 0; i < len(input); i += 3 {
-		common := intersectMap(intersectMap(itemMap(input[i]), itemMap(input[i+1])), itemMap(input[i+2]))
-		priority := asciiToPriority(getFirstKey(common))
-		t += priority
+		first := input[i]
+		second := input[i+1]
+		third := input[i+2]
+		for _, c := range first {
+			if strings.ContainsRune(second, c) && strings.ContainsRune(third, c) {
+				t += priority(c)
+				break
+			}
+		}
 	}
 	return t
 }
 
 func main() {
 	input := aoc2022.GetInput(3)
+	fmt.Println(partOne(input))
+	fmt.Println(partTwo(input))
+	input = aoc2022.GetBigBoyInput(3)
 	fmt.Println(partOne(input))
 	fmt.Println(partTwo(input))
 }
