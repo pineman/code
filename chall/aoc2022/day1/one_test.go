@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 
 	aoc2022 "github.com/pineman/code/chall/aoc2022/go"
@@ -24,8 +23,8 @@ func Test_partTwo(t *testing.T) {
 }
 
 func Benchmark_partTwo(b *testing.B) {
+	input := aoc2022.GetInput(1)
 	for i := 0; i < b.N; i++ {
-		input := aoc2022.GetInput(1)
-		fmt.Println(partTwo(input))
+		partTwo(input)
 	}
 }
