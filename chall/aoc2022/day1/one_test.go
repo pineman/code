@@ -24,6 +24,7 @@ func Test_partTwo(t *testing.T) {
 
 func Benchmark_partTwo(b *testing.B) {
 	input := aoc2022.GetInput(1)
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		partTwo(input)
 	}
