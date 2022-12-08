@@ -57,9 +57,9 @@ func partTwo_set(input []string) int {
 
 func priority(item rune) int {
 	if unicode.IsUpper(item) {
-		return int(item) - 65 + 27
+		return int(item) - 'A' + 27
 	} else {
-		return int(item) - 97 + 1
+		return int(item) - 'a' + 1
 	}
 }
 
