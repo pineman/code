@@ -61,3 +61,6 @@
 	path = proj/ju
 	url = git@gitlab.com:pineman/ju.git
 	branch = main
+[submodule "proj/abra-go"]
+	path = proj/abra-go
+	url = git@github.com:pineman/abra-go.git
