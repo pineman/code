@@ -12,7 +12,7 @@ func slowHandler(w http.ResponseWriter, req *http.Request) {
 	io.WriteString(w, "I am slow!\n")
 }
 
-func mainHTTP() {
+func main() {
 	srv := http.Server{
 		Addr:         "localhost:8888",
 		WriteTimeout: 5 * time.Second,

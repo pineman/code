@@ -10,21 +10,6 @@ type ball struct {
 	hits [2]int
 }
 
-func pingpong() {
-	p := message.NewPrinter(message.MatchLanguage("en"))
-
-	table := make(chan *ball)
-	go player(table, 0)
-	go player(table, 1)
-
-	table <- new(ball)
-	time.Sleep(10 * time.Second)
-
-	ball := <-table
-	total := ball.hits[0] + ball.hits[1]
-	p.Println(total, "total pings")
-	p.Println(total/10, "pings per second")
-}
 
 func player(table chan *ball, id int) {
 	for {
@@ -44,4 +29,20 @@ func player(table chan *ball, id int) {
 		ball.hits[id]++
 		table <- ball
 	}
+}
+
+func main() {
+	p := message.NewPrinter(message.MatchLanguage("en"))
+
+	table := make(chan *ball)
+	go player(table, 0)
+	go player(table, 1)
+
+	table <- new(ball)
+	time.Sleep(10 * time.Second)
+
+	ball := <-table
+	total := ball.hits[0] + ball.hits[1]
+	p.Println(total, "total pings")
+	p.Println(total/10, "pings per second")
 }

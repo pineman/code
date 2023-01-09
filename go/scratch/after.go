@@ -9,7 +9,7 @@ var c chan int
 
 func handle(int) {}
 
-func after() {
+func main() {
 	time.AfterFunc(time.Second, func() { fmt.Println("afterfunc"); time.Sleep(1000) })
 	select {
 	case m := <-c:

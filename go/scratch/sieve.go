@@ -21,7 +21,7 @@ func filter(in <-chan int, out chan<- int, prime int) {
 }
 
 // The prime sieve: Daisy-chain Filter processes.
-func mainSieve() {
+func main() {
 	ch := make(chan int) // Create a new channel.
 	go generate(ch)      // Launch Generate goroutine.
 	for i := 0; i < 999; i++ {

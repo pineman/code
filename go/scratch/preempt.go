@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func preempt() {
+func main() {
 	done := false
 
 	go func() {

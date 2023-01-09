@@ -6,7 +6,7 @@ func f(left, right chan int) {
 	right <- 1 + <-left
 }
 
-func chain() {
+func main() {
 	const N = 1e6
 	leftmost := make(chan int)
 	left := leftmost
