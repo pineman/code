@@ -64,3 +64,6 @@
 [submodule "proj/abra-go"]
 	path = proj/abra-go
 	url = git@github.com:pineman/abra-go.git
+[submodule "chall/aoc"]
+	path = chall/aoc
+	url = git@github.com:pineman/aoc.git
