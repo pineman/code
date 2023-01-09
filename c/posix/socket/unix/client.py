@@ -6,6 +6,6 @@ from socket import *
 i = 0
 while True:
     s = socket(AF_UNIX, SOCK_DGRAM)
-    sent = s.sendto(b'a' * int(2**17 + 81888), 'test')
+    sent = s.sendto(b'a' * int(2**17 + 81888), 'server')
     print(f"{i}: sent {sent} bytes")
     i += 1
