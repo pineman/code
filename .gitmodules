@@ -50,10 +50,6 @@
 [submodule "elixir/aoc"]
 	path = elixir/aoc
 	url = https://github.com/sasa1977/aoc
-[submodule "ruby/hello"]
-	path = ruby/hello
-	url = git@github.com:pineman/ruby-hello
-	branch = main
 [submodule "go/learn-go-with-tests"]
 	path = go/learn-go-with-tests
 	url = https://github.com/quii/learn-go-with-tests
