@@ -1,0 +1,27 @@
+stages:
+- build
+- test
+
+build:
+  stage: build
+  image:
+    name: marshallford/podman:1.9.3
+    entrypoint: [""]
+  variables:
+    # podman inside docker can't use overlay driver
+    STORAGE_DRIVER: 'vfs'
+  script:
+  - podman login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - podman build -t $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHORT_SHA .
+  - podman push $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHORT_SHA
+
+unit tests:
+  stage: test
+  image:
+    name: $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHORT_SHA
+    entrypoint: [""]
+  script:
+  # this is not a great idea.
+  # we want to run our app as services: or compose (preferred), and integration
+  # tests from outside. unit tests should be run in the build job.
+  - bundle exec rspec

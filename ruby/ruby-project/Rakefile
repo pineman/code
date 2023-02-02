@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new do |t|
+  t.fail_on_error = false
+end
+
+task :fasterer do
+  system 'bundle exec fasterer'
+end
+
+require 'reek/rake/task'
+Reek::Rake::Task.new do |t|
+  t.fail_on_error = false
+end
+
+task :autolint do
+  system 'bundle exec rake rubocop:auto_correct &>/dev/null'
+end
+
+task lint: %i[rubocop fasterer reek]

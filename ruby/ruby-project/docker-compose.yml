@@ -1,0 +1,4 @@
+services:
+  hello:
+    build: .
+    image: registry.gitlab.com/pinemang/hello/hello
