@@ -36,7 +36,7 @@
 	branch = main
 [submodule "proj/services"]
 	path = proj/services
-	url = git@gitlab.com:pineman/services.git
+	url = git@github.com:pineman/services.git
 	branch = main
 [submodule "elixir/elixir-in-action"]
 	path = elixir/elixir-in-action
