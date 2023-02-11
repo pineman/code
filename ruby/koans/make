@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ls *.rb | entr bash -c 'l=$(($(tput lines)-2)); for i in $(seq $l); do echo; done; rake'
