@@ -6,10 +6,10 @@ class LogLineParser
   def message
     @line.sub(/\[.*?\]: /, '').strip()
   end
-  
+
   def log_level
-    #@line[/\[(.*?)\]/, 1].downcase
-    /\[([^\]]*)\]/.match(@line)[1].downcase
+    @line[/\[(.*?)\]/, 1].downcase
+    #/\[([^\]]*)\]/.match(@line)[1].downcase
   end
 
   def reformat

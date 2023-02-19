@@ -1,0 +1,86 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="ActionCableChannelNotFound" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ConvertOneChainedExprToSafeNavigation" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CucumberDuplicatedStep" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="CucumberStepDefinitionParameter" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="GemInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="InvalidCallToProtectedPrivateMethod" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="MissingYardParamTag" enabled="false" level="INFORMATION" enabled_by_default="false" />
+    <inspection_tool class="MissingYardReturnTag" enabled="false" level="INFORMATION" enabled_by_default="false" />
+    <inspection_tool class="RailsActionMailboxMissingProcess" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RailsActionMailboxMissingRoutes" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RailsChecklist05" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RailsI18nInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RailsParamDefResolve" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RbenvGemsetsConfig" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RbsMissingTypeSignature" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="Rubocop" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyArgCount" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="RubyArgumentParentheses" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyAssignmentExpressionInConditionalInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyBlockToMethodReference" enabled="false" level="INFORMATION" enabled_by_default="false" />
+    <inspection_tool class="RubyBracketErrorInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyCaseWithoutElseBlockInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyClassMethodNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyClassModuleNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyClassVariableNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyClassVariableUsageInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyConstantNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyControlFlowConversionInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyDeadCode" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyDefParenthesesInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyDeprecatedSymbol" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="showForOldProjects" value="false" />
+    </inspection_tool>
+    <inspection_tool class="RubyDeprecatedSyntaxInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyDuplicatedKeysInHashInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyDynamicConstAssignment" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="RubyEmptyElseBlockInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyEmptyRescueBlockInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyExpressionInStringInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyForLoopInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyGlobalVariableNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyHashKeysTypesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyIfCanBeCaseInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyInstanceMethodNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyInstanceVariableNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyInstanceVariableToStringInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyInterpreter" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyJumpError" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyLiteralArrayInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyLocalVariableNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyMismatchedArgumentType" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyMismatchedConstantType" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyMismatchedGlobalVariableType" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyMismatchedParameterType" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyMismatchedReturnType" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyMismatchedVariableType" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyModifiedFrozenObject" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="RubyModuleAsSuperclassInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyNestedTernaryOperatorsInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyNilAnalysis" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyParameterNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyParenthesesAfterMethodCallInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyParenthesesAroundConditionInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyQuotedStringsInspection" enabled="false" level="INFORMATION" enabled_by_default="false" />
+    <inspection_tool class="RubyRedundantSafeNavigation" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyResolve" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="warnImplicitResults" value="false" />
+    </inspection_tool>
+    <inspection_tool class="RubyScope" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyShouldaUnsupportedTestFile" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubySimplifyBooleanInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubySuperCallWithoutSuperclassInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyThenInMultilineConditionalInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyTooManyInstanceVariablesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyTooManyMethodsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyUnlessWithElseInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyUnnecessaryReturnStatement" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyUnnecessaryReturnValue" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyUnnecessarySemicolon" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RubyUnusedLocalVariable" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="YARDTagsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  </profile>
+</component>
