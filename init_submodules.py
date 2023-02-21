@@ -3,6 +3,16 @@
 from configparser import ConfigParser
 from subprocess import call
 from shlex import quote
+import unittest
+import logging
+import sys
+
+
+class TestInitSubmodules(unittest.TestCase):
+    def test_sh_escape(self):
+        self.assertEqual(sh_escape("cd {}", "/; rm -rf /"), "cd '/; rm -rf /'")
+        self.assertEqual(sh_escape("cd {} {}", 1, 2), "cd 1 2")
+        self.assertEqual(sh_escape("cd {} {}", "/* asdf", 2), "cd '/* asdf' 2")
 
 
 def sh_escape(cmd, *args):
@@ -21,7 +31,9 @@ def sh(cmd, *args):
 
 
 if __name__ == "__main__":
-    sh("python -m unittest")
+    suite = unittest.TestSuite()
+    suite.addTest(TestInitSubmodules("test_sh_escape"))
+    unittest.TextTestRunner().run(suite)
     sh("git submodule update --init --recursive")
     c = ConfigParser()
     c.read(".gitmodules")
