@@ -31,6 +31,65 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
+  return 0 if dice.empty?
+  dice.sort!
+  score = 0
+  if dice[0] == dice[2]
+    if dice[0] == 1
+      score += 1000
+    else
+      score += dice[0] * 100
+    end
+    # dice = dice[3..5]
+    # dice.slice! 0..2
+    dice.shift 3
+  end
+  for d in dice
+    if d == 1
+      score += 100
+    elsif d == 5
+      score += 50
+    end
+  end
+  score
+end
+
+def score(dice)
+  triples = [1000, 200, 300, 400, 500, 600]
+  singles = [100, 0, 0, 0, 50, 0]
+  score = 0
+  for face, count in dice.tally
+    if count >= 3
+      score += triples[face-1]
+      count -= 3
+    end
+    score += singles[face-1]*count
+  end
+  score
+end
+
+# See also https://stackoverflow.com/a/45866888/11452792
+# Tito's solution (kind of a hybrid) using tally! Like python's Counter.
+RONERY_DAIÇA = {
+  1 => 100,
+  5 => 50,
+}
+RONERY_DAIÇA.default = 0
+
+SPECIAL_DAIÇA = { 1 => 1000 }
+SPECIAL_DAIÇA.default_proc = ->(_h, face) { face * 100 }
+
+def score_tito(dice)
+  dice.tally.reduce(0) do
+  |score, (face, count)|
+    # One-liner:
+    # score + SPECIAL_DAIÇA[face] * (count / 3) + RONERY_DAIÇA[face] * (count % 3)
+    score + if count >= 3
+              SPECIAL_DAIÇA[face] + (count - 3) * RONERY_DAIÇA[face]
+            else
+              RONERY_DAIÇA[face] * count
+            end
+  end
 end
 
 class AboutScoringProject < Neo::Koan
