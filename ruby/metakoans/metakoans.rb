@@ -132,7 +132,15 @@ module MetaKoans
   def koan_6
     c = Class::new {
       attribute 'a' => 42
+      class << self
+        attribute 'a' => 42
+      end
     }
+
+    assert{ c.a == 42 }
+    assert{ c.a? }
+    assert{ (c.a = nil) == nil }
+    assert{ not c.a? }
 
     o = c::new
 
