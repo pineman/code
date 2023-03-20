@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-p $LOAD_PATH
 require 'minitest/autorun'
 require './util'
 require './one'

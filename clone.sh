@@ -6,7 +6,7 @@ git clone git@github.com:pineman/wordfind.git proj/wordfind
 git clone git@github.com:hackerschool/ledmatrix.git proj/LEDmatrix
 git clone git@github.com:hackerschool/r2p.git proj/r2p
 git clone git@github.com:pineman/psis proj/psis
-git clone git@github.com:pineman/homepage.git proj/homepage
+git clone git@github.com:pineman/pineman.github.io.git proj/homepage
 git clone git@github.com:pineman/services.git proj/services
 git clone git@gitlab.com:pineman/ju.git proj/ju
 git clone git@github.com:pineman/abra-go.git proj/abra-go
