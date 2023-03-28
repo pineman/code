@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+go install
+../maelstrom/maelstrom test -w unique-ids --bin $GOPATH/bin/unique-ids --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition

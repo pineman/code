@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+go install
+../maelstrom/maelstrom test -w echo --bin $GOPATH/bin/echo --node-count 1 --time-limit 10
