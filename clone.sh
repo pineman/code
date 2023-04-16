@@ -11,6 +11,7 @@ git clone git@github.com:pineman/services.git proj/services
 git clone git@gitlab.com:pineman/ju.git proj/ju
 git clone git@github.com:pineman/abra-go.git proj/abra-go
 git clone git@github.com:pineman/aoc.git chall/aoc
+git clone git@github.com:pineman/bolt_invoices.git proj/bolt_invoices
 git clone https://github.com/github/gitignore git/gitignore
 git clone https://github.com/sasa1977/elixir-in-action elixir/elixir-in-action
 git clone https://github.com/sasa1977/demo_system elixir/demo_system

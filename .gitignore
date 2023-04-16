@@ -13,6 +13,7 @@ proj/r2p/
 proj/services/
 proj/wordfind/
 proj/wordmorph/
+proj/bolt_invoices
 chall/aoc/
 elixir/aoc/
 elixir/demo_system/
