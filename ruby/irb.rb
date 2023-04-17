@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+require 'rubygems'
+begin
+  gem 'listen'
+rescue Gem::LoadError
+  Gem.install('listen')
+  gem 'listen'
+end
 require 'listen'
 require 'irb'
 
@@ -15,7 +22,7 @@ def watch_and_reload(dir_path)
     (modified + added).each do |file|
       reload file
     end
-    # unload does not exist for removed...
+    # 'unload' does not exist for removed...
   end
   listener.start
 end
