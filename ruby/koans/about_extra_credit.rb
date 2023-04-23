@@ -23,7 +23,9 @@ class Game
 
   def run
     while true
-      @state = send(@state)
+      @new_state = send(@state)
+      send "print_#{@state}"
+      @state = @new_state
     end
   end
 
@@ -31,10 +33,7 @@ class Game
     @acc_score = 0
     @number_of_dice = 5
     if @round == :final_round_begin
-      puts "-"*23 + " FINAL ROUND " + "-"*23
       @round = @player
-    else
-      puts "-"*59
     end
     return :end_game if @next_player == @round
     @player = @next_player
@@ -42,19 +41,28 @@ class Game
     :roll
   end
 
+  def print_next_turn
+  end
+
   def roll
     @roll = @roller.roll @number_of_dice
-    puts "Player #{@player.name} rolled: #{@roll.dice} -> #{@roll.score} points"
     @acc_score += @roll.score
     @number_of_dice -= @roll.number_of_scoring_dice
     @number_of_dice = 5 if @number_of_dice == 0
     @roll.score > 0 ? :ask_greed : :end_turn
   end
 
+  def print_roll
+    puts "Player #{@player.name} rolled: #{@roll.dice} -> #{@roll.score} points"
+  end
+
   def ask_greed
+    :answer_greed
+  end
+
+  def print_ask_greed
     str = @number_of_dice == 1 ? "die" : "dice"
     puts " - Player #{@player.name}: roll again with #{@number_of_dice} #{str}? risk to lose: #{@acc_score}"
-    :answer_greed
   end
 
   def answer_greed
@@ -63,20 +71,12 @@ class Game
     @player.greed ? :roll : :end_turn
   end
 
+  def print_answer_greed
+  end
+
   def end_turn
-    if @player.greed
-      puts "Player #{@player.name} greeded too much and lost this turn!!"
-      return :next_turn
-    end
-    if @player.score == 0 && @acc_score < 300
-      puts "Player #{@player.name} didn't make it in, needed 300 but made #{@acc_score} points!"
-      return :next_turn
-    end
-    if @player.score < 300
-      puts "Player #{@player.name} made it in with #{@acc_score} points!"
-    else
-      puts "Player #{@player.name} won #{@acc_score} points! New score: #{@player.score+@acc_score}"
-    end
+    return :next_turn if @player.greed
+    return :next_turn if @player.score == 0 && @acc_score < 300
     @player.score += @acc_score
     if @player.score >= 3000 && @round == :normal
       @round = :final_round_begin
@@ -84,7 +84,27 @@ class Game
     :next_turn
   end
 
+  def print_end_turn
+    if @player.greed
+      puts "Player #{@player.name} greeded too much and lost this turn!!"
+    elsif @player.score == 0
+      puts "Player #{@player.name} didn't make it in, needed 300 but made #{@acc_score} points!"
+    elsif @player.score-@acc_score == 0
+      puts "Player #{@player.name} made it in with #{@acc_score} points!"
+    else
+      puts "Player #{@player.name} won #{@acc_score} points! New score: #{@player.score}"
+    end
+    if @round == :final_round_begin
+      puts "-"*23 + " FINAL ROUND " + "-"*23
+    else
+      puts "-"*59
+    end
+  end
+
   def end_game
+  end
+
+  def print_end_game
     winner = @players.max_by { _1.score }
     puts "Player #{winner.name} wins!!"
     exit 0
