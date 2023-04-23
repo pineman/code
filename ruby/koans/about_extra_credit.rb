@@ -63,12 +63,14 @@ class Greed
 
   # NOTES:
   # http://gameprogrammingpatterns.com/state.html
-  # Each state could be its own class & save it own data inside it, so that it
+  # - Each state could be its own class & save it own data inside it, so that it
   # is clearer what specific chunks of the whole Greed state it depends on.
   # It could then return its data, and have Greed (a kind of state manager like
   # Redux?) merge the state's returned data with its old state. The original
   # goal of using a FSM was to separate IO and logic (sort of like MVC), but it
   # could be convenient to have IO happening inside each state if necessary.
+  # - Could have a Turn object, which would contain roll, acc_score and
+  # number_of_dice.
   def initialize(seed, number_of_players)
     Roller.seed(seed)
     @players = create_players(number_of_players)
