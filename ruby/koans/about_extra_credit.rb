@@ -7,13 +7,13 @@
 # Write a player class and a Game class to complete the project.  This
 # is a free form assignment, so approach it however you desire.
 class Game
-  attr_accessor :state, :next_state, :roller, :players, :player, :next_player, :roll, :acc_score
+  Player = Struct.new(:name, :score, :greed)
 
   def initialize(seed, number_of_players)
     @roller = Roller.new seed
     @state = :next_turn
     @next_state = nil
-    @players = (0...number_of_players).map { |name| Player.new name }
+    @players = (0...number_of_players).map { |name| Player.new name, 0, false }
     @player = @players.first
     @next_player = @player
     @roll = nil
@@ -28,7 +28,6 @@ class Game
   end
 
   def next_turn
-    @roll = nil
     @acc_score = 0
     @number_of_dice = 5
     @player = @next_player
@@ -48,20 +47,13 @@ class Game
     @roll = @roller.roll @number_of_dice
     puts "Player #{@player.name} rolled: #{@roll.dice} -> #{@roll.score} points"
     @acc_score += @roll.score
-    if @number_of_dice == @roll.number_of_scoring_dice
-      @number_of_dice = 5
-    else
-      @number_of_dice -= @roll.number_of_scoring_dice
-    end
-    if @roll.score > 0
-      :ask_greed
-    else
-      :end_turn
-    end
+    @number_of_dice -= @roll.number_of_scoring_dice
+    @number_of_dice = 5 if @number_of_dice == 0
+    @roll.score > 0 ? :ask_greed : :end_turn
   end
 
   def ask_greed
-    str = @number_of_dice == 1 ? "die" : "dice" # TODO
+    str = @number_of_dice == 1 ? "die" : "dice"
     puts "   Player #{@player.name}: roll again with #{@number_of_dice} #{str}? risk to lose: #{@acc_score}"
     :answer_greed
   end
@@ -69,11 +61,7 @@ class Game
   def answer_greed
     answer = STDIN.gets
     @player.greed = answer.downcase.start_with?("y") || answer == "\n"
-    if @player.greed
-      :roll
-    else
-      :end_turn
-    end
+    @player.greed ? :roll : :end_turn
   end
 
   def end_turn
@@ -83,13 +71,21 @@ class Game
       else
         puts "Player #{@player.name} greeded too much and didn't get in the game with #{@acc_score} points!"
       end
+      return :next_turn
+    end
+    if @acc_score < 300
+      puts "Player #{@player.name} did not make it in yet -- needed 300 but got #{@acc_score} points!"
+      return :next_turn
+    end
+    if @player.score < 300
+      puts "Player #{@player.name} made it in with #{@acc_score} points!"
     else
-      @player.score += @acc_score
-      puts "Player #{@player.name} won #{@acc_score} points! New score: #{@player.score}"
-      if @player.score >= 3000 && @final_round == false
-        @final_round = true
-        @next_player = @players.last
-      end
+      puts "Player #{@player.name} won #{@acc_score} points! New score: #{@player.score+@acc_score}"
+    end
+    @player.score += @acc_score
+    if @player.score >= 3000 && @final_round == false
+      @final_round = true
+      @next_player = @players.last
     end
     :next_turn
   end
@@ -100,6 +96,8 @@ class Game
     exit 0
   end
 end
+
+Roll = Struct.new(:dice, :score, :number_of_scoring_dice)
 
 class Roller
   attr_accessor :rand
@@ -131,27 +129,6 @@ class Roller
       number_of_scoring_dice += count if single_score != 0
     end
     [score, number_of_scoring_dice]
-  end
-end
-
-class Roll
-  # TODO: check out https://ruby-doc.org/3.2.2/Struct.html
-  attr_accessor :dice, :score, :number_of_scoring_dice
-
-  def initialize(dice, score, number_of_scoring_dice)
-    @dice = dice
-    @score = score
-    @number_of_scoring_dice = number_of_scoring_dice
-  end
-end
-
-class Player
-  attr_accessor :name, :score, :greed
-
-  def initialize(name)
-    @name = name
-    @score = 0
-    @greed = false
   end
 end
 
