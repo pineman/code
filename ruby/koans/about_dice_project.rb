@@ -7,19 +7,14 @@ class DiceSet
   def initialize
     @rand = Random.new(1)
   end
-  # def roll(t)
-  #   @values = []
-  #   t.times do
-  #     @values << @rand.rand(1...6)
-  #   end
-  # end
+
   def roll(t)
     @values = []
     t.times { @values << @rand.rand(1...6) }
   end
-  # def roll(t)
-  #   @values = (0...t).map { @rand.rand(1...6) }
-  # end
+  def roll(t)
+    @values = (0...t).map { @rand.rand(1...6) }
+  end
 end
 
 class AboutDiceProject < Neo::Koan
@@ -64,7 +59,8 @@ class AboutDiceProject < Neo::Koan
     # If the rolls are random, then it is possible (although not
     # likely) that two consecutive rolls are equal.  What would be a
     # better way to test this?
-    # ANSWER: Use a fixed seed for the PRNG
+    # ANSWER: Use a fixed seed for the PRNG (a particular one such that it is
+    # guaranteed two consecutive rolls are different)
   end
 
   def test_you_can_roll_different_numbers_of_dice

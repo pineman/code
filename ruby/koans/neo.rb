@@ -218,7 +218,7 @@ module Neo
 
     def add_progress(prog)
       @_contents = nil
-      exists = File.exists?(PROGRESS_FILE_NAME)
+      exists = File.exist?(PROGRESS_FILE_NAME)
       File.open(PROGRESS_FILE_NAME,'a+') do |f|
         f.print "#{',' if exists}#{prog}"
       end
