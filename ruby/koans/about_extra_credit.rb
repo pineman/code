@@ -18,7 +18,7 @@ class Game
     @next_player = @player
     @roll = nil
     @number_of_dice = 5
-    @final_round = false
+    @round = :normal
   end
 
   def run
@@ -30,16 +30,15 @@ class Game
   def next_turn
     @acc_score = 0
     @number_of_dice = 5
-    @player = @next_player
-    @next_player = @players[(@players.index(@player) + 1) % @players.length]
-    if @final_round && @player == @players.last
-      return :end_game
-    end
-    if @final_round && @player == @players.first
+    if @round == :final_round_begin
       puts "-"*23 + " FINAL ROUND " + "-"*23
+      @round = @player
     else
       puts "-"*59
     end
+    return :end_game if @next_player == @round
+    @player = @next_player
+    @next_player = @players[(@players.index(@player) + 1) % @players.length]
     :roll
   end
 
@@ -54,7 +53,7 @@ class Game
 
   def ask_greed
     str = @number_of_dice == 1 ? "die" : "dice"
-    puts "   Player #{@player.name}: roll again with #{@number_of_dice} #{str}? risk to lose: #{@acc_score}"
+    puts " - Player #{@player.name}: roll again with #{@number_of_dice} #{str}? risk to lose: #{@acc_score}"
     :answer_greed
   end
 
@@ -66,15 +65,11 @@ class Game
 
   def end_turn
     if @player.greed
-      if @player.score >= 300
-        puts "Player #{@player.name} greeded too much and didn't win #{@acc_score} points!"
-      else
-        puts "Player #{@player.name} greeded too much and didn't get in the game with #{@acc_score} points!"
-      end
+      puts "Player #{@player.name} greeded too much and lost this turn!!"
       return :next_turn
     end
-    if @acc_score < 300
-      puts "Player #{@player.name} did not make it in yet -- needed 300 but got #{@acc_score} points!"
+    if @player.score == 0 && @acc_score < 300
+      puts "Player #{@player.name} didn't make it in, needed 300 but made #{@acc_score} points!"
       return :next_turn
     end
     if @player.score < 300
@@ -83,9 +78,8 @@ class Game
       puts "Player #{@player.name} won #{@acc_score} points! New score: #{@player.score+@acc_score}"
     end
     @player.score += @acc_score
-    if @player.score >= 3000 && @final_round == false
-      @final_round = true
-      @next_player = @players.last
+    if @player.score >= 3000 && @round == :normal
+      @round = :final_round_begin
     end
     :next_turn
   end
@@ -100,8 +94,6 @@ end
 Roll = Struct.new(:dice, :score, :number_of_scoring_dice)
 
 class Roller
-  attr_accessor :rand
-
   def initialize(seed)
     @rand = Random.new seed
   end
@@ -112,7 +104,6 @@ class Roller
     Roll.new dice, score, number_of_scoring_dice
   end
 
-  private
   def score(dice)
     triples = [1000, 200, 300, 400, 500, 600]
     singles = [100, 0, 0, 0, 50, 0]
@@ -132,5 +123,9 @@ class Roller
   end
 end
 
-game = Game.new 1, 3
-game.run
+if ENV["GREED_TEST"]
+  require File.expand_path(File.dirname(__FILE__) + '/neo')
+else
+  class Neo; class Koan; end; end
+  Game.new(1,3).run
+end
