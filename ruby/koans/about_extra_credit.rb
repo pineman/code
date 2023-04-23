@@ -72,9 +72,8 @@ class Greed
   def next_turn
     @acc_score = 0
     @number_of_dice = 5
-    if @round == :final_round_begin
-      @round = @player
-    end
+    # Save player that initiated the final round, use it to know when to end
+    @round = @player if @round == :final_round_begin
     return :end_game if @next_player == @round
     @player = @next_player
     @next_player = @players[(@players.index(@player) + 1) % @players.length]
@@ -103,9 +102,7 @@ class Greed
     return :next_turn if @player.greed
     return :next_turn if @player.score == 0 && @acc_score < 300
     @player.score += @acc_score
-    if @player.score >= 3000 && @round == :normal
-      @round = :final_round_begin
-    end
+    @round = :final_round_begin if @player.score >= 3000 && @round == :normal
     :next_turn
   end
 
