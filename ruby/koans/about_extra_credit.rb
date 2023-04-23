@@ -47,7 +47,7 @@ class Game
   end
 
   def print_end_game
-    winner = @g.players.max_by { _1.score }
+    winner = @g.players.to_a.max_by { _1.score }
     puts "Player #{winner.name} wins!!"
     exit 0
   end
@@ -60,13 +60,19 @@ class Greed
 
   def initialize(seed, number_of_players)
     @roller = Roller.new seed
-    @players = (0...number_of_players).map { |name| Player.new name, 0, false }
-    @player = @players.first
-    @next_player = @player
+    @players = create_players(number_of_players)
+    @player = nil
     @roll = nil
     @acc_score = 0
     @number_of_dice = 5
     @round = :normal
+  end
+
+  def create_players(number_of_players)
+    players = (0...number_of_players).map { |name| Player.new name, 0, false }
+    cycle = players.cycle
+    cycle.define_singleton_method(:to_a) { players }
+    cycle
   end
 
   def next_turn
@@ -74,9 +80,8 @@ class Greed
     @number_of_dice = 5
     # Save player that initiated the final round, use it to know when to end
     @round = @player if @round == :final_round_begin
-    return :end_game if @next_player == @round
-    @player = @next_player
-    @next_player = @players[(@players.index(@player) + 1) % @players.length]
+    @player = @players.next
+    return :end_game if @player == @round
     :do_roll
   end
 
