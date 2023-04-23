@@ -20,6 +20,14 @@ class Game
     end
   end
 
+  def print_next_turn
+    if @g.round == :final_round_begin
+      puts "-"*23 + " FINAL ROUND " + "-"*23
+    else
+      puts "-"*59
+    end
+  end
+
   def print_do_roll
     puts "Player #{@g.player.name} rolled: #{@g.roll.dice} -> #{@g.roll.score} points"
   end
@@ -39,11 +47,6 @@ class Game
     else
       puts "Player #{@g.player.name} won #{@g.acc_score} points! New score: #{@g.player.score}"
     end
-    if @g.round == :final_round_begin
-      puts "-"*23 + " FINAL ROUND " + "-"*23
-    else
-      puts "-"*59
-    end
   end
 
   def print_end_game
@@ -58,8 +61,16 @@ class Greed
   Player = Struct.new(:name, :score, :greed)
   Roll = Struct.new(:dice, :score, :number_of_scoring_dice)
 
+  # NOTES:
+  # http://gameprogrammingpatterns.com/state.html
+  # Each state could be its own class & save it own data inside it, so that it
+  # is clearer what specific chunks of the whole Greed state it depends on.
+  # It could then return its data, and have Greed (a kind of state manager like
+  # Redux?) merge the state's returned data with its old state. The original
+  # goal of using a FSM was to separate IO and logic (sort of like MVC), but it
+  # could be convenient to have IO happening inside each state if necessary.
   def initialize(seed, number_of_players)
-    @roller = Roller.new seed
+    Roller.seed(seed)
     @players = create_players(number_of_players)
     @player = nil
     @roll = nil
@@ -86,7 +97,7 @@ class Greed
   end
 
   def do_roll
-    @roll = @roller.roll(@number_of_dice)
+    @roll = Roller.roll(@number_of_dice)
     @acc_score += @roll.score
     @number_of_dice -= @roll.number_of_scoring_dice
     @number_of_dice = 5 if @number_of_dice == 0
@@ -112,17 +123,17 @@ class Greed
   end
 
   class Roller
-    def initialize(seed)
-      @rand = Random.new seed
+    def self.seed(seed)
+      @@rand = Random.new seed
     end
 
-    def roll(number_of_dice)
-      dice = (0...number_of_dice).map { @rand.rand(1...6) }
+    def self.roll(number_of_dice)
+      dice = (0...number_of_dice).map { @@rand.rand(1...6) }
       score, number_of_scoring_dice = score(dice)
       Roll.new dice, score, number_of_scoring_dice
     end
 
-    def score(dice)
+    def self.score(dice)
       triples = [1000, 200, 300, 400, 500, 600]
       singles = [100, 0, 0, 0, 50, 0]
       number_of_scoring_dice = 0
