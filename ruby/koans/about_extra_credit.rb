@@ -23,8 +23,8 @@ class Game
 
   def run
     while true
-      @new_state = send(@state)
-      send "print_#{@state}"
+      @new_state = send(@state) rescue {}
+      send "print_#{@state}" rescue {}
       @state = @new_state
     end
   end
@@ -39,9 +39,6 @@ class Game
     @player = @next_player
     @next_player = @players[(@players.index(@player) + 1) % @players.length]
     :roll
-  end
-
-  def print_next_turn
   end
 
   def roll
@@ -71,9 +68,6 @@ class Game
     @player.greed ? :roll : :end_turn
   end
 
-  def print_answer_greed
-  end
-
   def end_turn
     return :next_turn if @player.greed
     return :next_turn if @player.score == 0 && @acc_score < 300
@@ -99,9 +93,6 @@ class Game
     else
       puts "-"*59
     end
-  end
-
-  def end_game
   end
 
   def print_end_game
