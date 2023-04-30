@@ -84,6 +84,8 @@ class Greed
   def create_players(number_of_players)
     players = (0...number_of_players).map { |name| Player.new name, 0, false }
     cycle = players.cycle
+    # use define_singleton_method instead of ordinary def ... end, because def
+    # does not close over surrounding scope (unlike blocks which are closures)
     cycle.define_singleton_method(:to_a) { players }
     cycle
   end
