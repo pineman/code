@@ -29,27 +29,28 @@
 [submodule "proj/homepage"]
 	path = proj/homepage
 	url = git@github.com:pineman/pineman.github.io.git
-	branch = master
+	branch = main
 [submodule "proj/services"]
 	path = proj/services
 	url = git@github.com:pineman/services.git
-	branch = master
+	branch = main
 [submodule "proj/ju"]
 	path = proj/ju
 	url = git@gitlab.com:pineman/ju.git
-	branch = master
+	branch = main
 [submodule "proj/abra-go"]
 	path = proj/abra-go
 	url = git@github.com:pineman/abra-go.git
-	branch = master
+	branch = main
 [submodule "chall/aoc"]
 	path = chall/aoc
 	url = git@github.com:pineman/aoc.git
+	branch = main
 [submodule "proj/bolt_invoices"]
 	path = proj/bolt_invoices
 	url = git@github.com:pineman/bolt_invoices.git
-	branch = master
+	branch = main
 [submodule "git/gitignore"]
 	path = git/gitignore
 	url = https://github.com/github/gitignore
-	branch = master
+	branch = main
