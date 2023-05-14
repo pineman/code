@@ -16,10 +16,11 @@ clone git@github.com:pineman/pineman.github.io.git proj/homepage
 clone git@github.com:pineman/services.git proj/services
 clone git@gitlab.com:pineman/ju.git proj/ju
 clone git@github.com:pineman/abra-go.git proj/abra-go
+clone git@github.com:pineman/abra_elixir.git proj/abra_elixir
 clone git@github.com:pineman/aoc.git chall/aoc
 clone git@github.com:pineman/bolt_invoices.git proj/bolt_invoices
 clone https://github.com/github/gitignore git/gitignore
-clone https://github.com/sasa1977/elixir-in-action elixir/elixir-in-action
-clone https://github.com/sasa1977/demo_system elixir/demo_system
-clone https://github.com/dnlserrano/elixir-workshop elixir/elixir-workshop
-clone https://github.com/sasa1977/aoc elixir/aoc
+git clone https://github.com/sasa1977/elixir-in-action elixir/elixir-in-action
+git clone https://github.com/sasa1977/demo_system elixir/demo_system
+git clone https://github.com/dnlserrano/elixir-workshop elixir/elixir-workshop
+git clone https://github.com/sasa1977/aoc elixir/aoc

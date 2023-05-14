@@ -54,3 +54,7 @@
 	path = git/gitignore
 	url = https://github.com/github/gitignore
 	branch = main
+[submodule "proj/abra_elixir"]
+	path = proj/abra_elixir
+	url = git@github.com:pineman/abra_elixir.git
+	branch = main
