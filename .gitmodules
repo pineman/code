@@ -1,60 +1,46 @@
 [submodule "proj/abra"]
 	path = proj/abra
 	url = git@github.com:pineman/abra.git
-	branch = master
 [submodule "proj/blackjack"]
 	path = proj/blackjack
 	url = git@github.com:pineman/blackjack.git
-	branch = master
 [submodule "proj/wordmorph"]
 	path = proj/wordmorph
 	url = git@github.com:pineman/wordmorph.git
-	branch = master
 [submodule "proj/wordfind"]
 	path = proj/wordfind
 	url = git@github.com:pineman/wordfind.git
-	branch = master
 [submodule "proj/LEDmatrix"]
 	path = proj/LEDmatrix
 	url = git@github.com:hackerschool/ledmatrix.git
-	branch = master
 [submodule "proj/r2p"]
 	path = proj/r2p
 	url = git@github.com:hackerschool/r2p.git
-	branch = master
 [submodule "proj/psis"]
 	path = proj/psis
 	url = git@github.com:pineman/psis
-	branch = master
 [submodule "proj/homepage"]
 	path = proj/homepage
 	url = git@github.com:pineman/pineman.github.io.git
-	branch = main
 [submodule "proj/services"]
 	path = proj/services
 	url = git@github.com:pineman/services.git
-	branch = main
 [submodule "proj/ju"]
 	path = proj/ju
 	url = git@gitlab.com:pineman/ju.git
-	branch = main
 [submodule "proj/abra-go"]
 	path = proj/abra-go
 	url = git@github.com:pineman/abra-go.git
-	branch = main
 [submodule "chall/aoc"]
 	path = chall/aoc
 	url = git@github.com:pineman/aoc.git
-	branch = main
 [submodule "proj/bolt_invoices"]
 	path = proj/bolt_invoices
 	url = git@github.com:pineman/bolt_invoices.git
-	branch = main
 [submodule "git/gitignore"]
 	path = git/gitignore
 	url = https://github.com/github/gitignore
-	branch = main
 [submodule "proj/abra_elixir"]
 	path = proj/abra_elixir
 	url = git@github.com:pineman/abra_elixir.git
-	branch = main
+
