@@ -4,6 +4,15 @@
 https://elixir-lang.org/getting-started/introduction.html
 https://elixir-lang.org/crash-course.html
 https://elixir-lang.org/getting-started/optional-syntax.html
+https://media.pragprog.com/titles/elixir/ElixirCheat.pdf
+https://devhints.io/elixir
+### Literals
+all sigils
+number: 31_337, 5e-3
+tuple (array): {:ok, 1, 2, 3}
+list: [1, 2, 3]
+kw list: [{:atom, value}] -> list of 2 elem tuple (atom: value as last arg)
+map: %{ key => value, atom: value }
 
 ## Phoenix/LiveView
 https://filipecabaco.com/post/2022-09-13_realtime_updates_with_liveview
