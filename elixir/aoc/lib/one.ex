@@ -1,7 +1,7 @@
 defmodule Aoc do
   def part_one do
-    File.read("input/one")
-    |> elem(1)
+    # File.read/1 vs File.read!/1 https://elixir-lang.org/getting-started/try-catch-and-rescue.html#errors
+    File.read!("input/one")
     |> String.split("\n")
     |> Enum.chunk_by(&(&1 == ""))
     |> Enum.filter(&(&1 != [""]))
