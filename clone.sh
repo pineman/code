@@ -23,4 +23,4 @@ clone https://github.com/github/gitignore git/gitignore
 git clone https://github.com/sasa1977/elixir-in-action elixir/elixir-in-action
 git clone https://github.com/sasa1977/demo_system elixir/demo_system
 git clone https://github.com/dnlserrano/elixir-workshop elixir/elixir-workshop
-git clone https://github.com/sasa1977/aoc elixir/aoc
+git clone https://github.com/sasa1977/aoc elixir/sasa-aoc
