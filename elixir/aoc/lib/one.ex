@@ -1,14 +1,29 @@
-defmodule Aoc do
-  def part_one do
-    # File.read/1 vs File.read!/1 https://elixir-lang.org/getting-started/try-catch-and-rescue.html#errors
-    File.read!("input/one")
-    |> String.split("\n")
+defmodule Aoc.DayOne do
+  def run do
+    input = Aoc.get_input("one")
+    IO.puts(part_one(input))
+    IO.puts(part_two(input))
+  end
+
+  defp elves(input) do
+    input
     |> Enum.chunk_by(&(&1 == ""))
     |> Enum.filter(&(&1 != [""]))
     |> Enum.map(fn elf ->
       Enum.map(elf, &String.to_integer/1)
     end)
     |> Enum.map(&Enum.sum/1)
-    |> Enum.max()
+    |> Enum.sort()
+  end
+
+  def part_one(input) do
+    elves(input)
+    |> Enum.max
+  end
+
+  def part_two(input) do
+    elves(input)
+    |> Enum.slice(-3..-1)
+    |> Enum.sum()
   end
 end
