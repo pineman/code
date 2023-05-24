@@ -1,9 +1,9 @@
-defmodule Aoc.DayOne.Test do
+defmodule Aoc.One.Test do
   use ExUnit.Case
 
-  test "2022 Day One" do
+  test "AoC 2022 day one" do
     input = Aoc.get_input("one")
-    assert Aoc.DayOne.part_one(input) == 66_306
-    assert Aoc.DayOne.part_two(input) == 195_292
+    assert Aoc.One.part_one(input) == 66_306
+    assert Aoc.One.part_two(input) == 195_292
   end
 end
