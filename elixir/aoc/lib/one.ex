@@ -1,6 +1,4 @@
 defmodule Aoc.One do
-  require Aoc
-
   def run do
     input = Aoc.get_input("one")
     IO.puts(part_one(input))
@@ -20,7 +18,7 @@ defmodule Aoc.One do
 
   def part_one(input) do
     elves(input)
-    |> Enum.max()
+    |> List.last()
   end
 
   def part_two(input) do
