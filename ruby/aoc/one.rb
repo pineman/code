@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
-require './util'
-
-def part_one_tito(input)
-  input.chunk { _1.empty? && :_separator }
-       .map { _2.sum(&:to_i) }
-       .max
-end
+require_relative 'aoc'
 
 def elves(input)
   input.chunk(&:empty?).map { _2.sum(&:to_i) }.sort
@@ -21,7 +15,7 @@ def part_two(input)
 end
 
 if __FILE__ == $0
-  input = get_input('one')
+  input = Aoc.get_input('../input/one')
   puts part_one(input)
   puts part_two(input)
 end
