@@ -5,6 +5,29 @@ defmodule Aoc.Two do
     IO.puts(part_two(input))
   end
 
+  # Most solutions online seem to use pattern matching on function arguments.
+  def part_one(input) do
+    Enum.map(input, fn x ->
+      shape = String.at(x, 2)
+      outcome = @inferOutcomeMap[x]
+      score(outcome, shape)
+    end)
+    |> Enum.sum()
+  end
+
+  def part_two(input) do
+    Enum.map(input, fn x ->
+      shape = @inferShapeMap[x]
+      outcome = String.at(x, 2)
+      score(outcome, shape)
+    end)
+    |> Enum.sum()
+  end
+
+  defp score(outcome, shape) do
+    @scoreOutcomeMap[outcome] + @scoreShapeMap[shape]
+  end
+
   @scoreOutcomeMap %{
     "X" => 0,
     "Y" => 3,
@@ -40,26 +63,4 @@ defmodule Aoc.Two do
     "C Y" => "Z",
     "C Z" => "X"
   }
-
-  defp score(outcome, shape) do
-    @scoreOutcomeMap[outcome] + @scoreShapeMap[shape]
-  end
-
-  def part_one(input) do
-    Enum.map(input, fn x ->
-      shape = String.at(x, 2)
-      outcome = @inferOutcomeMap[x]
-      score(outcome, shape)
-    end)
-    |> Enum.sum()
-  end
-
-  def part_two(input) do
-    Enum.map(input, fn x ->
-      shape = @inferShapeMap[x]
-      outcome = String.at(x, 2)
-      score(outcome, shape)
-    end)
-    |> Enum.sum()
-  end
 end
