@@ -3,5 +3,6 @@ defmodule Aoc do
   def get_input(day) do
     File.read!("input/#{day}")
     |> String.split("\n")
+    |> Enum.drop(-1)
   end
 end
