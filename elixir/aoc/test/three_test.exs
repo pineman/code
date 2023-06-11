@@ -12,6 +12,12 @@ defmodule Aoc.Three.Test do
 
     test "part two", %{input: input} do
       assert Aoc.Three.part_two(input) == 2363
+      assert Aoc.Three.part_two_set(input) == 2363
+
+      # Benchee.run(%{
+      #   "normal" => fn -> Aoc.Three.part_two(input) end,
+      #   "set" => fn -> Aoc.Three.part_two_set(input) end
+      # })
     end
   end
 end

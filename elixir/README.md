@@ -37,3 +37,8 @@ https://github.com/sasa1977/aoc
 https://github.com/sasa1977/demo_system
 https://github.com/elixirkoans/elixir-koans
 https://github.com/devonestes/fast-elixir#combining-lists-with--vs--code
+
+## tips
+tap(), then()
+dbg() -- like IO.inspect but better (can use in pipeline too)
+immediately invoked anonymous functions (inside pipelines) - `|> (&Enum.split(&1, div(length(&1), 2))).()`
