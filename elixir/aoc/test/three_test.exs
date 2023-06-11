@@ -8,6 +8,12 @@ defmodule Aoc.Three.Test do
   describe "AoC 2022 day three" do
     test "part one", %{input: input} do
       assert Aoc.Three.part_one(input) == 8105
+      assert Aoc.Three.part_one_set(input) == 8105
+
+      # Benchee.run(%{
+      #   "normal" => fn -> Aoc.Three.part_one(input) end,
+      #   "set" => fn -> Aoc.Three.part_one_set(input) end
+      # })
     end
 
     test "part two", %{input: input} do
