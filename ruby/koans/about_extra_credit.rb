@@ -82,7 +82,7 @@ class Greed
   end
 
   def create_players(number_of_players)
-    players = (0...number_of_players).map { |name| Player.new name, 0, false }
+    players = (0...number_of_players).map { |name| Player.new(name, 0, false) }
     cycle = players.cycle
     # use define_singleton_method instead of ordinary def ... end, because def
     # does not close over surrounding scope (unlike blocks which are closures)
@@ -128,13 +128,13 @@ class Greed
 
   class Roller
     def self.seed(seed)
-      @@rand = Random.new seed
+      @@rand = Random.new(seed)
     end
 
     def self.roll(number_of_dice)
       dice = number_of_dice.times.map { @@rand.rand(1..6) }
       score, number_of_scoring_dice = score(dice)
-      Roll.new dice, score, number_of_scoring_dice
+      Roll.new(dice, score, number_of_scoring_dice)
     end
 
     def self.score(dice)
