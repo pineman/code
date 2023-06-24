@@ -132,7 +132,7 @@ class Greed
     end
 
     def self.roll(number_of_dice)
-      dice = (0...number_of_dice).map { @@rand.rand(1...6) }
+      dice = number_of_dice.times.map { @@rand.rand(1..6) }
       score, number_of_scoring_dice = score(dice)
       Roll.new dice, score, number_of_scoring_dice
     end
