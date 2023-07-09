@@ -7,7 +7,7 @@
 # Write a player class and a Game class to complete the project.  This
 # is a free form assignment, so approach it however you desire.
 class Game
-  def initialize(seed, number_of_players)
+  def initialize(seed:, number_of_players:)
     @g = Greed.new(seed, number_of_players)
     @state = :next_turn
   end
@@ -161,5 +161,5 @@ if ENV["GREED_TEST"]
   require File.expand_path(File.dirname(__FILE__) + '/neo')
 else
   class Neo; class Koan; end; end
-  Game.new(1,3).run
+  Game.new(seed: 1, number_of_players: 3).run
 end
