@@ -24,7 +24,7 @@ defmodule Strings do
   end
 
   koan "But strings never lie about themselves" do
-    assert true == String.contains?("An incredible day", "An incredible day")
+    assert true == String.contains?("An incredible day", "day")
   end
 
   koan "Sometimes you want just the opposite of what is given" do

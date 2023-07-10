@@ -102,10 +102,10 @@ defmodule Numbers do
   end
 
   koan "Round the number up or down for me" do
-    assert Float.round(5.5) === 6.0
-    assert Float.round(5.4) === 5.0
-    assert Float.round(8.94, 1) === 8.9
-    assert Float.round(-5.5674, 3) === -5.567
+    assert Float.round(5.5) == 6
+    assert Float.round(5.4) == 5
+    assert Float.round(8.94, 1) == 8.9
+    assert Float.round(-5.5674, 3) == -5.567
   end
 
   koan "I want the first and last in the range" do

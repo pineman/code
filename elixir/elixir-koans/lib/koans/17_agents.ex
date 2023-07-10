@@ -10,6 +10,7 @@ defmodule Agents do
 
   koan "Agents may also be named so that you don't have to keep the pid around" do
     Agent.start_link(fn -> "Why hello" end, name: AgentSmith)
+    # note: `AgentSmith` is a module name, since it starts with a capital letter
     assert Agent.get(AgentSmith, & &1) == "Why hello"
   end
 

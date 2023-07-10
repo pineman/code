@@ -62,7 +62,7 @@ defmodule Enums do
   koan "Zip-up in pairs!" do
     letters = [:a, :b, :c]
     numbers = [1, 2, 3]
-    assert Enum.zip(letters, numbers) == [a: 1, b: 2, c: 3]
+    assert Enum.zip(letters, numbers) == [{:a, 1}, {:b, 2}, {:c, 3}]
   end
 
   koan "When you want to find that one pesky element" do

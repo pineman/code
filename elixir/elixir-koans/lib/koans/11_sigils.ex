@@ -21,7 +21,7 @@ defmodule Sigils do
   end
 
   koan "The ~S sigil is similar to ~s but doesn't do interpolation" do
-    assert ~S[1 + 1 = #{1+1}] == "1 + 1 = #\{1+1\}"
+    assert ~S[1 + 1 = #{1+1}] == "1 + 1 = \#{1+1}"
   end
 
   koan "The ~w sigil creates word lists" do
@@ -33,6 +33,6 @@ defmodule Sigils do
   end
 
   koan "The ~W sigil behaves to ~w as ~S behaves to ~s" do
-    assert ~W(Hello #{1+1}) == ["Hello", "#\{1+1\}"]
+    assert ~W(Hello #{1+1}) == ["Hello", "\#{1+1}"]
   end
 end
