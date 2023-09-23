@@ -44,3 +44,6 @@
 	path = proj/abra_elixir
 	url = git@github.com:pineman/abra_elixir.git
 
+[submodule "proj/su"]
+	path = proj/su
+	url = git@github.com:pineman/su.git
