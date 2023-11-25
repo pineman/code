@@ -13,8 +13,8 @@ class Game
   end
 
   def run
-    while true
-      @new_state = @g.send(@state) rescue {}
+    loop do
+      @new_state = @g.send(@state)
       send "print_#{@state}" rescue {}
       @state = @new_state
     end
@@ -22,9 +22,9 @@ class Game
 
   def print_next_turn
     if @g.round == :final_round_begin
-      puts "-"*23 + " FINAL ROUND " + "-"*23
+      puts "-" * 23 + " FINAL ROUND " + "-" * 23
     else
-      puts "-"*59
+      puts "-" * 59
     end
   end
 
@@ -33,7 +33,7 @@ class Game
   end
 
   def print_ask_greed
-    str = @g.number_of_dice == 1 ? "die" : "dice"
+    str = (@g.number_of_dice == 1) ? "die" : "dice"
     puts " - Player #{@g.player.name}: roll again with #{@g.number_of_dice} #{str}? risk to lose: #{@g.acc_score}"
   end
 
@@ -42,7 +42,7 @@ class Game
       puts "Player #{@g.player.name} greeded too much and lost this turn!!"
     elsif @g.player.score == 0
       puts "Player #{@g.player.name} didn't make it in, needed 300 but made #{@g.acc_score} points!"
-    elsif @g.player.score-@g.acc_score == 0
+    elsif @g.player.score - @g.acc_score == 0
       puts "Player #{@g.player.name} made it in with #{@g.acc_score} points!"
     else
       puts "Player #{@g.player.name} won #{@g.acc_score} points! New score: #{@g.player.score}"
@@ -105,7 +105,8 @@ class Greed
     @acc_score += @roll.score
     @number_of_dice -= @roll.number_of_scoring_dice
     @number_of_dice = 5 if @number_of_dice == 0
-    @roll.score > 0 ? :ask_greed : :end_turn
+    return :ask_greed if @roll.score > 0
+    :end_turn
   end
 
   def ask_greed
@@ -113,9 +114,10 @@ class Greed
   end
 
   def answer_greed
-    answer = STDIN.gets
+    answer = $stdin.gets
     @player.greed = answer.downcase.start_with?("y") || answer == "\n"
-    @player.greed ? :do_roll : :end_turn
+    return :do_roll if @player.greed
+    :end_turn
   end
 
   def end_turn
@@ -142,13 +144,13 @@ class Greed
       singles = [100, 0, 0, 0, 50, 0]
       number_of_scoring_dice = 0
       score = 0
-      for face, count in dice.tally
+      dice.tally.each do |face, count|
         if count >= 3
-          score += triples[face-1]
+          score += triples[face - 1]
           count -= 3
           number_of_scoring_dice += 3
         end
-        single_score = singles[face-1]*count
+        single_score = singles[face - 1] * count
         score += single_score
         number_of_scoring_dice += count if single_score != 0
       end
@@ -158,7 +160,7 @@ class Greed
 end
 
 if ENV["GREED_TEST"]
-  require File.expand_path(File.dirname(__FILE__) + '/neo')
+  require File.expand_path(File.dirname(__FILE__) + "/neo")
 else
   class Neo; class Koan; end; end
   Game.new(seed: 1, number_of_players: 3).run
