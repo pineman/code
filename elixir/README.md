@@ -41,4 +41,5 @@ https://github.com/devonestes/fast-elixir#combining-lists-with--vs--code
 ## tips
 tap(), then()
 dbg() -- like IO.inspect but better (can use in pipeline too)
+use `iex --dbg pry -S mix` to debug & break at `dbg()` calls
 immediately invoked anonymous functions (inside pipelines) - `|> (&Enum.split(&1, div(length(&1), 2))).()`
