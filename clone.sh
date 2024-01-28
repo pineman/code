@@ -20,6 +20,9 @@ submodule git@github.com:pineman/abra_elixir.git proj/abra_elixir
 submodule git@github.com:pineman/aoc.git chall/aoc
 submodule git@github.com:pineman/bolt_invoices.git proj/bolt_invoices
 submodule git@github.com:pineman/su.git proj/su
+submodule git@github.com:pineman/fpt.git proj/fpt
+submodule git@github.com:anapaismartins/trip-tuner.git proj/trip-tuner
+
 submodule https://github.com/github/gitignore git/gitignore
 git clone https://github.com/sasa1977/elixir-in-action elixir/elixir-in-action
 git clone https://github.com/sasa1977/demo_system elixir/demo_system
