@@ -7,3 +7,6 @@ using a bind mount for db scripts: because the db image's default entrypoint doe
 ```sh
 docker stop -t 0 homepage_db_1 && docker rm homepage_db_1
 ```
+
+# Show what rsync will REALLY do
+`rsync -n -c --itemize-changes computer/ /Volumes/Backup/b2/computer/ G -v '^\.'`

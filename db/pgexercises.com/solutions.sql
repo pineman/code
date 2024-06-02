@@ -275,16 +275,23 @@ select count(*) over(), firstname, surname from cd.members order by joindate;
 select row_number() over(order by joindate), firstname, surname from cd.members order by joindate;
 
 -- Output the facility id that has the highest number of slots booked, again
-select facid, total
+select facid, sum(slots) from cd.bookings group by facid order by 2 desc limit 1; -- close but doesn't respect the tie condition
+
+with slots as (select sum(slots) as slots from cd.bookings group by facid)
+select facid, sum(slots)
+from cd.bookings
+group by facid
+having sum(slots) = (select max(slots) from slots);
+
+select facid, sum
 from (
   select
     facid,
-    rank() over(order by sum(slots) desc),
-    sum(slots) as total
+    rank() over (order by sum(slots) desc),
+    sum(slots)
   from cd.bookings
   group by facid
-)
-as sub where rank = 1;
+) s where s.rank = 1;
 
 -- Rank members by (rounded) hours used
 --select m.firstname, m.surname,
@@ -304,15 +311,23 @@ from (
 order by rank, surname, firstname;
 
 -- Find the top three revenue generating facilities
---select f.name, rank() over (order by sum(case
---  when memid=0 then slots*guestcost
---  else slots*membercost
---end) desc) as rank
---from cd.facilities f
---inner join cd.bookings b on f.facid = b.facid
---group by f.name
---order by rank, name
+--with q as (select
+--	b.facid,
+--	sum(case
+--		when b.memid=0 then b.slots*f.guestcost
+--		else b.slots*f.membercost
+--	end) as sum
+--from cd.bookings b
+--inner join cd.facilities f on f.facid = b.facid
+--group by b.facid)
+--
+--select
+--	f.name,
+--	rank() over(order by sum desc)
+--from q
+--inner join cd.facilities f on f.facid = q.facid
 --limit 3;
+
 select name, rank
 from (
   select f.name, rank() over (order by sum(case

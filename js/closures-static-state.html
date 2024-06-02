@@ -1,0 +1,18 @@
+<html>
+<head>
+	<script>
+    // Functions (closures) can have their own state, like C static vars!
+    const test = () => {
+      let a = 0;
+      return () => {
+        console.log(a);
+        a += 1;
+      }
+    }
+    const debounced = test();
+	</script>
+</head>
+<body>
+  <button onclick="debounced()">hi</button>
+</body>
+</html>
