@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: pg
+      POSTGRES_USER: pg
+      POSTGRES_PASSWORD: pg
+    ports:
+      - "5432:5432"
+    volumes:
+      - a_postgres_data:/var/lib/postgresql/data
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      POSTGRES_DB: ts
+      POSTGRES_USER: ts
+      POSTGRES_PASSWORD: ts
+    ports:
+      - "5433:5432"
+    volumes:
+      - a_timescaledb_data:/var/lib/postgresql/data
+      - ./timescaledb.conf:/etc/postgresql/postgresql.conf
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+
+volumes:
+  a_postgres_data:
+  a_timescaledb_data:
