@@ -42,18 +42,18 @@
 # Moore voting
 def majority_element(nums)
   return nums[0] if nums.size == 1
-  t = nums.size/2
+  t = nums.size / 2
   c, cc = nums[0], 1
   nums[1..].each.with_index { |v, i|
-  if c == v
-    cc += 1
-    return v if cc > t
-  else
-    cc -= 1
-    if cc == 0
-    c, cc = v, 1
+    if c == v
+      cc += 1
+      return v if cc > t
+    else
+      cc -= 1
+      if cc == 0
+        c, cc = v, 1
+      end
     end
-  end
   }
   c
 end

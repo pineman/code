@@ -4,7 +4,7 @@
 # @return {Integer}
 def remove_element(nums, val)
   return 0 if nums.size == 0
-  l, r = 0, nums.size-1
+  l, r = 0, nums.size - 1
   loop do
     r -= 1 while nums[r] == val && r >= 0
     l += 1 while nums[l] != val && l < nums.size

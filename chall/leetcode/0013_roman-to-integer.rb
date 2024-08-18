@@ -20,15 +20,15 @@ def roman_to_int(s)
   l = 0
   p s
   while l < s.size
-  if T[s[l..l+1]]
-    v = T[s[l..l+1]]
-    l += 2
-  else
-    v = T[s[l]]
-    l += 1
-  end
-  p v
-  t += v
+    if T[s[l..l + 1]]
+      v = T[s[l..l + 1]]
+      l += 2
+    else
+      v = T[s[l]]
+      l += 1
+    end
+    p v
+    t += v
   end
   t
 end
