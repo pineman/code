@@ -10,3 +10,7 @@ docker stop -t 0 homepage_db_1 && docker rm homepage_db_1
 
 # Show what rsync will REALLY do
 `rsync -n -c --itemize-changes computer/ /Volumes/Backup/b2/computer/ G -v '^\.'`
+
+DNS records resolution automatically follow CNAMEs.
+
+Binary sections like .text, .bss, etc. are an ELF thing and not "universal".
