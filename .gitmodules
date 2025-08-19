@@ -25,9 +25,6 @@
 [submodule "proj/services"]
 	path = proj/services
 	url = git@github.com:pineman/services.git
-[submodule "proj/ju"]
-	path = proj/ju
-	url = git@gitlab.com:pineman/ju.git
 [submodule "proj/abra-go"]
 	path = proj/abra-go
 	url = git@github.com:pineman/abra-go.git
