@@ -1,22 +1,28 @@
 require "async"
+
 require "excon"
 require "httpx"
-require "http"
 require "curb"
 require "typhoeus"
+require "http"
+require "net/http"
 
 start = Time.now
-Async do |task|
+
+Async do
+  tasks = []
   20.times do |i|
-    task.async do
-      #HTTP.get("https://httpbin.org/delay/1.6")
-      #URI.open("https://httpbin.org/delay/1.6")
-      #Net::HTTP.get_response(URI("https://httpbin.org/delay/1.6"))
-      #HTTPX.get("https://httpbin.org/delay/1.6")
-      #Excon.get("https://httpbin.org/delay/1.6")
-      #Typhoeus.get("https://httpbin.org/delay/1.6")
-      #Curl.get("https://httpbin.org/delay/1.6")
+    tasks << Async do
+      #HTTP.get("https://httpbin.org/delay/1")
+      #URI.open("https://httpbin.org/delay/1")
+      #Net::HTTP.get(URI("https://httpbin.org/delay/1"))
+      #HTTPX.get("https://httpbin.org/delay/1")
+      #Excon.get("https://httpbin.org/delay/1")
+      #Typhoeus.get("https://httpbin.org/delay/1")
+      Curl.get("https://httpbin.org/delay/1")
     end
   end
+  tasks.each(&:wait)
 end.wait
+
 puts Time.now - start
