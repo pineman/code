@@ -1,22 +1,41 @@
 class Sem {
   #q;
+  #acquiring;
 
   constructor(num) {
-    this.#q = Array(num);
-    for (let i = 0; i < num; i++) {
-      this.#q[i] = new Promise((resolve) => {
-        return resolve(i);
-      });
-    }
+    this.#q = Array.from({ length: num }, () => Promise.resolve());
+    this.#acquiring = Promise.resolve();
   }
 
-  async run(f) {
-    await Promise.race(this.#q).then(async (i) => {
-      this.#q[i] = new Promise(async (resolve, reject) => {
-        await f();
-        resolve(i);
-      });
+  run(fn) {
+    // Deferred to signal when slot is released
+    let releaseSlot;
+    const slotOccupied = new Promise((r) => (releaseSlot = r));
+
+    // Race for a free slot
+    const slotAcquired = this.#acquiring.then(() =>
+      Promise.race(this.#q.map((p, i) => p.then(() => i)))
+    );
+
+    // Mark the slot as occupied BEFORE next run can race
+    const slotUpdated = slotAcquired.then((slot) => {
+      this.#q[slot] = slotOccupied;
+      return slot;
     });
+
+    // Next run waits until we've marked our slot
+    this.#acquiring = slotUpdated;
+
+    // Do the work and release slot when done
+    const result = slotUpdated.then(async () => {
+      try {
+        return await fn();
+      } finally {
+        releaseSlot();
+      }
+    });
+
+    return result;
   }
 }
 
@@ -27,7 +46,7 @@ const start = performance.now();
 const log = (i) => {
   const second = Math.round((performance.now() - start) / 1000);
   console.log(
-    `${second}s - completed promise that sleeps for ${i + 1} seconds`,
+    `${second}s - completed promise that sleeps for ${i + 1} seconds`
   );
 };
 
@@ -41,6 +60,10 @@ const func = (i) => {
 
 const s = new Sem(4);
 
-for (let i = 0; i < 10; i++) {
-  await s.run(func(i));
-}
+// Kick off all 10 tasks - semaphore limits to 4 concurrent
+const promises = Array.from({ length: 10 }, (_, i) => s.run(func(i)));
+
+const results = await Promise.all(promises);
+results.forEach((ret, i) => {
+  console.log(`${i} returns ${ret}`);
+});
