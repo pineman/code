@@ -32,9 +32,12 @@ The National Security Agency provides a satirical document in which we are instr
 Example 3 (about never-ending job interviews):
 Bureaucrats continue to fuck everything up for everyone. Hackernews points out that Google is full of this particular brand of bureaucrat, which Hackernews interprets as meaning that everyone on Earth is an incompetent moron, except Hackernews, who has all the answers. Many of those Hackernews work at Google, where they explain that they're much better at interviewing than anyone else at Google. Nobody attempts to determine whether any of these superior interviewers are in fact the same people the rest of Hackernews is bitching about.
 
+Example 4 (about DisneyMustPay Alan Dean Foster):
+A business dispute goes public. Hackernews recognizes the names of both sides of the dispute, and so it is time to dust off the law degrees from Wikipedia University and litigate this in the Court of Forum Comments. Predictably, the result is pages of Hackernews incorrecting one another on copyright law, accounting, the specific facts of this dispute, and the nature of intellectual property itself. No technology is discussed.
+
 ---
 
-Now write a single n-gate.com paragraph for the following Hacker News story and its comments. Do not repeat the title. Make it SHORT and BITING — 3-5 sentences max.
+Now write a single n-gate.com paragraph for the following Hacker News story and its comments. Do not repeat the title. Make it SHORT and BITING — 3-4 sentences max.
 
 Story: {title}
 URL: {url}
@@ -98,7 +101,8 @@ def main():
 
     num_comments = len(story.get("kids", []))
     date = datetime.datetime.fromtimestamp(story.get("time", 0)).strftime("%Y-%m-%d")
-    header = f"{title}\n{url}\n{num_comments} comments | {date}\n"
+    hn_url = f"https://news.ycombinator.com/item?id={story_id}"
+    header = f"{title}\n{hn_url}\n{num_comments} comments | {date}\n"
 
     if args.prompt_only:
         print(prompt)
