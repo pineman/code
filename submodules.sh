@@ -22,8 +22,9 @@ submodule git@github.com:pineman/bolt_invoices.git proj/bolt_invoices
 submodule git@github.com:pineman/su.git proj/su
 submodule git@github.com:pineman/fpt.git proj/fpt
 
-submodule https://github.com/github/gitignore git/gitignore
+git clone https://github.com/github/gitignore git/gitignore
 git clone https://github.com/sasa1977/elixir-in-action elixir/elixir-in-action
 git clone https://github.com/sasa1977/demo_system elixir/demo_system
 git clone https://github.com/dnlserrano/elixir-workshop elixir/elixir-workshop
 git clone https://github.com/sasa1977/aoc elixir/sasa-aoc
+git clone https://github.com/steveclarke/real-world-rails ruby/real-world-rails
